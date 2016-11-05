@@ -1,7 +1,0 @@
-# OpenOCD-Debugger
-sudo apt-get install libtools
-sudo apt-get install automake
-git clone http://openocd.zylin.com/p/openocd.git openocd-stm32f7
-
-# GDB-Installation
-sudo apt-get install gdb

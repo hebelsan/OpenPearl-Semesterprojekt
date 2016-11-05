@@ -1,3 +1,0 @@
-# OpenOCD Installation
-# Anleitung befolgen
-http://gnuarmeclipse.github.io/openocd/install/
