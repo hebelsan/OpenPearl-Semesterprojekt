@@ -19,6 +19,7 @@ Das Team, bestehend aus Alexander Hebel, Dennis Seilnacht und Jonathan Weißenbe
 \begin{figure}[h]
 \begin{center}
 \caption{Kugelsortiermaschine}
+\includegraphics[width=10cm]{grafiken/Seitenansicht.jpg}
 \label{bild_kugelsortiermaschine}
 \end{center}
 \end{figure}
@@ -31,4 +32,14 @@ Das primäre Ziel der Arbeit ist die Lauffähigkeit von OpenPEARL auf der Zielpl
 \end{center}
 \end{figure}
 Sofern die Grundfunktionalitäten in angemessener Zeit umgesetzt werden können, wird zusätzlich die Verwendbarkeit des Displays angestrebt. Das Display soll zusätzlich Statusberichte liefern über den Zustand der Sortierungsanlage. 
+\subsection{Beschreibung der Kugelsortiermaschine}
+Die Sortiermaschine wird von der Hochschule Furtwangen bereitgestellt. In diesem Abschnitt wird im Wesentlichen die Funktionalität und die Bestandteile der Sortiermaschine geklärt.
+Der Einwurf der Kugeln erfolgt von Hand. In der Draufsicht (siehe Abbildung), ist die Laufbahn, die Ballführung zu erkennen. Dadurch, dass die Führung leicht abschüssig ist, rollen die Kugeln. Auf dem Weg nach unten, passieren die Kugeln mehrere Lichtschranken. Durch diese Lichtschranken ist es möglich, die Schienen in Abschnitte einzuteilen und mehrere Kugeln gleichzeitig erfassen zu können. Wenn beispielsweise eine Kugel Lichtschranke 3 passiert, kann im Balleinwurf schon eine neue Kugel eingegeben werden. Die Durchmesserbestimmung ist im wesentlichen ein Motor, der eine Gewindestange in Richtung Rollbahn bewegt. Nachdem eine Kugel eingeworfen wurde, rollt diese als erstes in Richtung dieser Messeinheit. Durch eine Klappe von unten wird die Kugel an der Messstation gestoppt. Wie bereits beschrieben, wird die Gewindestange dann in Richtung Rollfeld gedreht, bis ein Taster ausgelöst wird. Anschließend daran, wird der Potentiometerwert ausgelesen. Bei dem Potentiometer handelt es sich um einen Drehpotentiometer, der sich mit dem Drehen der Gewindestange verändert. Anhand dieses Wertes kann der Durchmesser der Kugel bestimmt werden. Ist der Wert gelesen, wird die Gewindestange zurückgefahren und die Bodenklappe geöffnet. Die nächste Station, die von der Kugel passiert wird, ist die Waageeinheit. Wie erwartet 
+\begin{figure}[ht]
+\begin{center}
+\includegraphics[width=14cm]{grafiken/Draufsicht.png}
+\caption{Die Draufsicht auf die Demoapparatur}
+\label{draufsicht_sortiermaschine}
+\end{center}
+\end{figure}
 \end{document}
