@@ -1,0 +1,27 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{listings}
+\author{Jonathan Weißenberger}
+\begin{document}
+\section{Einrichtung des Debuggers}
+In diesem Kapitel wird im Stil eines Tutorials vorgestellt, wie wir vorgegangen sind, um den Debugger zum Laufen zu bekommen. Als Betriebssystem kam Debian zum Einsatz.
+\subsection{Download Eclipse}
+Um den Debugger zum Laufen zu bekommen, benötigt man zuallererst eine funktionierende Eclipse IDE. Für unser Projekt haben wir uns für 'Eclipse IDE for C/C++ Developers' entschieden erhältlich auf \url{http://www.eclipse.org/downloads/}.
+Nach dem Download muss das Paket entpackt werden. In der Kommandozeile funktioniert dies mittel des Befehls 
+\begin{lstlisting} 
+$ tar -xzf <eclipse-download-file>
+\end{lstlisting}
+oder ganz einfach in der grafischen Benutzeroberfläche des Betriebssystems.
+\subsection{Toolchain-Installation}
+Um später debuggen zu können, wird ein Kompiler für die Zielplattform benötigt und der spezifische GDB. Diese Tools findet man in Toolchains. Ein Toolchain ist eine komplette Suite, mit Werkzeugen, um für fremde Hardwarearchitekturen Software entwickeln zu können. 
+Wir verwenden die GNU-Toolchain 
+\subsection{Installieren der Eclipse Toolchain Tools}
+\subsection{Installieren von OpenOCD}
+\subsection{Debuggen des ersten Projekts}
+\end{document}

@@ -18,9 +18,9 @@
 Das Team, bestehend aus Alexander Hebel, Dennis Seilnacht und Jonathan Weißenberger beschäftigen sich im vierten Semester mit der Portierung der Umgebung OpenPEARL für Microcontroller. Das Target in der Portierung ist das Entwicklungsboard STM32F746-DISCO. Zusätzlich zur Portierung erfolgt eine Demoapplikation. Hierbei ist die bereits existierende Kugelsortierungsanlage der Hochschule Furtwangen mit dem Microcontrollerboard zu steuern.
 \begin{figure}[h]
 \begin{center}
-\caption{Kugelsortiermaschine}
 \includegraphics[width=10cm]{grafiken/Seitenansicht.jpg}
 \label{bild_kugelsortiermaschine}
+\caption{Kugelsortiermaschine}
 \end{center}
 \end{figure}
 Das primäre Ziel der Arbeit ist die Lauffähigkeit von OpenPEARL auf der Zielplattform. Im Konkreten bedeutet das, dass Software in der Sprache OpenPEARL übersetzt werden kann und dann nach der Übertragung auf dem Zielsystem läuft. Das Kompilat soll nachvollziehbare Ergebnisse liefern, die wir zuvor definieren. Im Fall der Sortierungsanlage sollen die Kugeln ihrer jeweiligen Dichte entsprechend in die einzelnen Fächer eingeordnet werden. Die Dichte errechnet sich dann aus dem Durchmesser der Kugel und dem Gewicht ($Dichte=Masse/Volumen$). Zu den Funktionalitäten, die mit OpenPEARL genutzt werden sollen gehört das $I^2C$-Bussystem. Durch das Bussystem wird die Kugelsortierungsmaschine angesteuert und Informationen abgerufen. Außerdem soll eine Kommunikationsverbindung mit dem Target mittels UART-Schnittstelle von einem Host-Computer aus möglich sein. Durch die Schnittstelle soll es möglich sein, Befehle an den Microcontroller zu senden und Informationen abzurufen. 
@@ -42,4 +42,8 @@ Der Einwurf der Kugeln erfolgt von Hand. In der Draufsicht (siehe Abbildung), is
 \label{draufsicht_sortiermaschine}
 \end{center}
 \end{figure}
+
+\subsection{Beschreibung des Zeitplans}
+
+
 \end{document}
