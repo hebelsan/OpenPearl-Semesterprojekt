@@ -559,6 +559,7 @@ namespace pearlrt {
 #define AUTOCONF_INCLUDED
 #define CONFIG_COMPILER_ANTLR "/usr/local/lib/antlr-4.5-complete.jar"
 #define CONFIG_LINUX 1
+#define CONFIG_STM32F7 1
 #define CONFIG_INSTALL_Target "/usr/local"
 #if (TARGET==2 && CONFIG_LPC1768_CHECK_STACK_OVERFLOW==1)
 

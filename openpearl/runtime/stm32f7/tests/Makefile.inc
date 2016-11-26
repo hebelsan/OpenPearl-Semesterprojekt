@@ -37,7 +37,7 @@
 PLIB = OpenPEARLstm32f7_board.o libOpenPEARLstm32f7.a
 
 targets +=\
-#	tests/digitaliotest
+	tests/digitaliotest
 
 #	tests/DataTypeTests1 \
 #	tests/DataTypeTests2 \
