@@ -64,7 +64,7 @@ INCS += ../common
 #---------------------------------
 # required parts of stm32f7 HAL
 # directory, includes directories HAL
-STM32F7HAL= ../cortexM/system_stm32f7xx.c
+STM32F7HAL= ../cortexM/stm32f7xx.h
 INCS += $(STM32F7HAL)
 #
 #LPCOpen_CSRC += $(LPCOpen)/uart_17xx_40xx.c
