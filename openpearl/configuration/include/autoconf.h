@@ -1,6 +1,6 @@
 /*
  * Automatically generated C config: don't edit
- * Thu Nov 24 13:04:15 2016
+ * Mon Nov 28 14:04:27 2016
  */
 #ifndef AUTOCONF_INCLUDED
 #define AUTOCONF_INCLUDED
