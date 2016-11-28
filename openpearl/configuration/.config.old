@@ -1,0 +1,23 @@
+#
+# Automatically generated make config: don't edit
+#
+
+#
+# Compiler
+#
+CONFIG_COMPILER_ANTLR="/usr/local/lib/antlr-4.5-complete.jar"
+
+#
+# Runtime System
+#
+# CONFIG_LINUX is not set
+# CONFIG_LPC1768 is not set
+CONFIG_STM32F7=y
+# CONFIG_STM32F7_tests is not set
+# CONFIG_DOC_PREPORT is not set
+
+#
+# Installation Settings
+#
+CONFIG_INSTALL_Target="/usr/local"
+# CONFIG_HAS_I2C is not set

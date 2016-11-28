@@ -1,0 +1,4 @@
+\htgt{TypeProcedure} ::=\\
+\x \{ {\bf PROC} $\mid$ {\bf PROCEDURE} \} [ \hlink{ParameterListForSPC} ]
+	 [ \hlink{ResultAttribute} ] 
+
