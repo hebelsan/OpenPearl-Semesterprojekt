@@ -1,5 +1,0 @@
-\htgt{ArrayDenotationS} ::=\\
-\x \hlink{OneIdentifierOrList} \hlink{VirtualDimensionList} [ {\bf INV} ] \\
-\x \hlink{TypeAttributeForArray} \{ \hlink{GlobalAttribute} $\mid$
-  \hlink{IdentificationAttribute} \}
-

@@ -1,3 +1,0 @@
-\htgt{Type-VOID} ::=\\
-\x {\bf STRUCT [ ]} \x $/^*$ only allowed in combination with REF $*/$\\
-

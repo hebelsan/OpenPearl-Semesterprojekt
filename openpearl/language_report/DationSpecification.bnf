@@ -1,5 +1,0 @@
-\htgt{DationSpecification} ::= \\
-\x \{ {\bf SPECIFY $\mid$ SPC} \} \hlink{OneIdentifierOrList} 
-  \hlink{TypeDationSystem}
- [ \hlink{GlobalAttribute} ] ;
-

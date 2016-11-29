@@ -1,5 +1,0 @@
-\htgt{ProblemPart} ::=\\
-\x {\bf PROBLEM}; \\
-\x [\{ \hlink{Declaration} $\mid$ 
-	\hlink{Specification} $\mid$
-	\hlink{Identification} \} $^{...}$ ]\\

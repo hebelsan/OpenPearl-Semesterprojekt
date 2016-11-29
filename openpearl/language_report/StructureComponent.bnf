@@ -1,4 +1,0 @@
-\htgt{StructureComponent} ::=\\
-\x \hlink{OneIdentifierOrList}$\S $ForStructureComponent 
-	[ \hlink{DimensionAttribute} ]\\
-\x \hlink{TypeAttributeInStructureComponent}\\

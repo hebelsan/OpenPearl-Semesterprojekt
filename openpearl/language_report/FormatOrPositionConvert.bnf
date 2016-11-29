@@ -1,6 +1,0 @@
-\htgt{FormatOrPositionConvert} ::= \\
-\x [ \hlink{FormatFactor} ] \{ \hlink{Format} $\mid$
-	 \hlink{PositionConvert} \}\\
-\x $\mid$ \hlink{FormatFactor} ( \hlink{FormatOrPositionConvert}
-	 [ , \hlink{FormatOrPositionConvert} ] $^{...}$ )\\
-

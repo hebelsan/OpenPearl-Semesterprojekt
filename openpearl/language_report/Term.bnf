@@ -1,4 +1,0 @@
-\htgt{Term} ::= \\
-\x \hlink{Factor} [ \{ $^*$ $\mid$ // 
-	$\mid$ {\bf REM} \} \hlink{Factor} ] $^{...}$\\
-

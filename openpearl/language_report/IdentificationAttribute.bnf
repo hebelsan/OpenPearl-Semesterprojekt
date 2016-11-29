@@ -1,3 +1,0 @@
-\htgt{IdentificationAttribute} ::= \\
-\x {\bf IDENT} ( \hlink{Name}$\S $Object )\\
-

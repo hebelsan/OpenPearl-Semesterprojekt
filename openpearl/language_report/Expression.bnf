@@ -1,4 +1,0 @@
-\htgt{Expression} ::=\\
-\x [ \hlink{MonadicOperator} ] \hlink{Operand}
-	 [ \hlink{DyadicOperator}   \hlink{Expression} ] $^{...}$\\
-

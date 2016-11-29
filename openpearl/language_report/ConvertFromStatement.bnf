@@ -1,7 +1,0 @@
-\htgt{ConvertFromStatement} ::=\\
-\x {\bf CONVERT} \hlink{Name}$\S $Variable
-	 [ , \hlink{Name}$\S $Variable ] $^{...}$
-	 {\bf FROM} \hlink{Expression}$\S $CharacterString\\
-\x [ {\bf BY} \hlink{FormatOrPositionConvert}
-	 [ , \hlink{FormatOrPositionConvert} ] $^{...}$ ] ;\\
-

@@ -1,3 +1,0 @@
-\htgt{TypeFloat} ::=\\
-\x {\bf FLOAT} [ (\hlink{Precision}) ]
-

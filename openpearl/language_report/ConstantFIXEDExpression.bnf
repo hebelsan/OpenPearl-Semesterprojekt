@@ -1,3 +1,0 @@
-\htgt{ConstantFIXEDExpression} ::=\\
-\x \hlink{Term} [ \{ + $\mid$ - \} \hlink{Term} ] $^{...}$\\
-        

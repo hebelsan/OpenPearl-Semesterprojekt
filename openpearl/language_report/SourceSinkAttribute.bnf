@@ -1,3 +1,0 @@
-\htgt{SourceSinkAttribute} ::=\\
-\x {\bf IN $\mid$ OUT $\mid$ INOUT}\\
-

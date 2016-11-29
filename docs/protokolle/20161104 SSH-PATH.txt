@@ -1,7 +1,0 @@
-# SSH-Path Variable richtig setzen.
-# Laut der Dokumentation von SSH (man-files) wird nach .bashrc ~/.ssh/rc aufgerufen und ausgeführt.
-# Jedenfalls hatte ich das Problem, dass die Änderungen, die ich an PATH 
-# in .bashrc oder rc gemacht habe in der SSH-Shell vom Remoterechner nie zur Geltung kamen.
-# Die Pathvariable wird nach dem Ausführen von .bashrc und rc nochmal komplett überschrieben.
-# Von was genau, kann ich nicht nachvollziehen. 
-# Jedenfalls löst sich das Problem, wenn man die gewünschte Änderung an der PATH-Variablen in /etc/profile einträgt. Komische Sache.

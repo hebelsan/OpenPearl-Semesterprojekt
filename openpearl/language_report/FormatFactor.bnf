@@ -1,4 +1,0 @@
-\htgt{FormatFactor} ::=\\
-\x ( \hlink{Expression}$\S $IntegerGreaterZero ) 
-	$\mid$ \hlink{IntegerWithoutPrecision}$\S $GreaterZero\\
-

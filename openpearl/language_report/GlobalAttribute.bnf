@@ -1,3 +1,0 @@
-\htgt{GlobalAttribute} ::=\\
-%%%\x {\bf GLOBAL} [ ( \hlink{Indicator}$\S $Module ) ]\\
-\x {\bf GLOBAL} [ ( \hlink{Identifier}$\S $OfaModule ) ]\\

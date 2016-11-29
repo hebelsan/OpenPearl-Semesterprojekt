@@ -1,3 +1,0 @@
-\htgt{IOStructure} ::=\\
-\x {\bf STRUCT} [ \hlink{IOStructureComponent} [ , \hlink{IOStructureComponent} ] $^{...}$ ]
-

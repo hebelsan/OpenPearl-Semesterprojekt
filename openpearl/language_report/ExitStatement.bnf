@@ -1,3 +1,0 @@
-\htgt{ExitStatement} ::=\\
-\x {\bf EXIT} [ \hlink{Identifier}$\S $BlockOrLoop ] ;\\
-

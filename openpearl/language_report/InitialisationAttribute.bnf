@@ -1,3 +1,0 @@
-\htgt{InitialisationAttribute} ::=\\
-\x \{ {\bf INITIAL $\mid$ INIT} \} ( \hlink{InitElement} 
-	[ , \hlink{InitElement} ] $^{...}$ )\\

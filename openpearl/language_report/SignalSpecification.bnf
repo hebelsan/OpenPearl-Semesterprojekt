@@ -1,4 +1,0 @@
-\htgt{SignalSpecification} ::=\\
-\x \{ {\bf SPECIFY  $\mid$  SPC} \} \hlink{OneIdentifierOrList} 
-{\bf SIGNAL} [ \hlink{GlobalAttribute} ] ;
-

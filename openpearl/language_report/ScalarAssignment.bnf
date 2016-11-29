@@ -1,3 +1,0 @@
-\htgt{ScalarAssignment} ::=\\
-\x \hlink{Name}\S ScalarVariable \{ := $\mid$ = \} \hlink{Expression};
-

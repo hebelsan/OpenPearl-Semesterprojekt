@@ -1,6 +1,0 @@
-\htgt{ClassAttribute} ::= \\
-\x \x {\bf ALPHIC} $\mid$                  \\ 
-\x \x {\bf BASIC}  \hlink{TypeOfTransmissionData} $\mid$ \\
-\x \x  \hlink{TypeOfTransmissionData}              \\
-
-

@@ -1,4 +1,0 @@
-\htgt{TaskCoordinationStatement} ::=\\
-\x \{ \hlink{SemaStatement}  $\mid$ \hlink{BoltStatement} \}
-
-

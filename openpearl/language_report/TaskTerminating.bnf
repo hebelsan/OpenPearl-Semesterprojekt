@@ -1,3 +1,0 @@
-\htgt{TaskTerminating} ::=\\
-\x {\bf TERMINATE} [ \hlink{Name}$\S $Task ] ; \\
-

@@ -1,5 +1,0 @@
-OperatorDefinition ::= \\
-\x {\bf OPERATOR} OpName ( OpParameter [ , OpParameter ] ) \hlink{ResultAttribute} ;\\
-\x \x \hlink{ProcedureBody}\\
-\x {\bf END} ; \\
-

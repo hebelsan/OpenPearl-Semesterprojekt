@@ -1,3 +1,0 @@
-\htgt{IOCompoundType} ::= \\
-\x \hlink{IOStructure} $\mid$ \hlink{Identifier}$\S $ForNewTypeFromSimpleTypes
-

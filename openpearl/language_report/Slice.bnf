@@ -1,5 +1,0 @@
-
-\htgt{Slice} ::=\\
-\x \hlink{Name}$\S $Array ( [ \hlink{Index} , ] $^{...}$ \hlink{Index} : \hlink{Index} )\\
-
-

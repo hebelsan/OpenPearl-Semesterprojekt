@@ -1,5 +1,0 @@
-\htgt{CloseStatement} ::=\\ 
-\x {\bf CLOSE} \hlink{Name}$\S $Dation 
-	[ {\bf BY} \hlink{CloseParameter} 
-	[ , \hlink{CloseParameter} ] $^{...}$ ] ;\\
-

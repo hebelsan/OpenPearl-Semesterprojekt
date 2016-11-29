@@ -1,9 +1,0 @@
-# OpenOCD Installation
-# Anleitung befolgen
-http://gnuarmeclipse.github.io/openocd/install/
-http://gnuarmeclipse.github.io/qemu/install/
-
-# für den GDB vom MC-Board ist die libncurses in 32Bit-Version nötig
-sudo apt-get install libncurses5:i386
-
-# to fix: Irgendwie will die Änderung am PATH in der .bashrc nicht übernommen werden.

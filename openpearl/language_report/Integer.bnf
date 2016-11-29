@@ -1,2 +1,0 @@
-\htgt{Integer} ::=\\
-\x \hlink{IntegerWithoutPrecision} [ ( \hlink{Precision} ) ]

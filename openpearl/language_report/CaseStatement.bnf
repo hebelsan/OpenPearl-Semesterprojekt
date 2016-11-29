@@ -1,3 +1,0 @@
-\htgt{CaseStatement} ::=\\
-\x \hlink{CaseStatement1} $\mid$ \hlink{CaseStatement2}\\
-

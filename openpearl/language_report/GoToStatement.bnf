@@ -1,3 +1,0 @@
-\htgt{GoToStatement} ::= \\
-\x {\bf GOTO} \hlink{Identifier}$\S $Label ; \\
-
