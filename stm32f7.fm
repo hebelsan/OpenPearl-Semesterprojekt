@@ -1,0 +1,55 @@
+config STM32F7
+        boolean  "Select the runtime sytem for the STM32F746 DISCOVERY"
+	default n
+	help
+	This port targets the STM32F746 DISCOVERY board. Target specific 
+	i/o-setting is done directly in the source code.
+	
+	This port is in work. Build and execution problems 
+        may occur selecting this option. 
+
+#choice
+config STM32F7_tests
+	depends on STM32F7
+	boolean "build low level test applications"
+	default n
+	help
+	This will create the low level test application of the runtime
+        system for the STM32F7 microcontroller. 
+        These tests should be run at least once to make shure that
+	the runtime system interacts properly with your configuration
+        with hardware and toolchain.
+	Usually deselect this.
+
+#choice
+#depends on LPC1768
+#   prompt  "Select System Timer"
+#    default LPC1768_FreeRTOSSystemTimer
+#    help
+#    Exactly one timer solution must be selected for the timed tasking
+#    operations.
+#
+# config LPC1768_FreeRTOSSystemTimer 
+#     bool "SystemTimer1MS"
+#     help 
+#     The system time is based on a 1ms timer. This limits the precision
+#     of delay to this time increment.
+#
+#
+# config LPC1768_FreeRTOSHRTimer 
+#     bool "HR-Timer (experimental)"
+#     help
+#     The system time is based on a high precision timer, whos operation
+#     is updated on each new timer request in the system.
+#     This should leed to delay opertation on a time base of 1us.
+#     Currently this feature does not work properly.
+#
+#endchoice
+
+config LPC1768_UART
+     bool "UART support"
+     default y
+     help
+     This option enables the system dation and driver for the two uart
+     channels
+

@@ -1,0 +1,11 @@
+# 20161109 Erkenntnis
+## Die heutige Erkenntnis ist, dass st-flash nur Binärdateien auf unser Entwicklungsbord schreiben kann.
+## Man kann hex-Dateien mit der Toolchain konvertieren.
+arm-none-eabi-objcopy -I ihex --output-target=binary <file_source.hex> <file_target.bin>
+
+## DEBUGGER LÄUFT!
+### Hier wird das richtige Setup für OpenOCD und GDB erklärt:
+http://www.carminenoviello.com/2015/01/07/setting-gcceclipse-toolchain-stm32nucleo-part-2/
+
+### Hier wird erklärt, wie man ein Projekt in Eclipse richtig einrichtet:
+http://www.carminenoviello.com/2015/07/13/started-stm32f746g-disco/

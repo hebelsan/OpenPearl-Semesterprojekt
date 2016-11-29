@@ -1,0 +1,34 @@
+#
+# Automatically generated make config: don't edit
+#
+
+#
+# Compiler
+#
+CONFIG_COMPILER_ANTLR="/usr/local/lib/antlr-4.5-complete.jar"
+
+#
+# Runtime System
+#
+# CONFIG_LINUX is not set
+CONFIG_LPC1768=y
+CONFIG_LPC1768_CHECK_STACK_OVERFLOW=y
+CONFIG_LPC1768_tests=y
+
+#
+# Drivers
+#
+# CONFIG_LPC1768_USB_Keyboard is not set
+# CONFIG_LPC1768_USB_Disc is not set
+CONFIG_LPC1768_UART=y
+CONFIG_LPC1768_HY32A=y
+CONFIG_STM32F7=y
+# CONFIG_STM32F7_tests is not set
+# CONFIG_DOC_PREPORT is not set
+
+#
+# Installation Settings
+#
+CONFIG_INSTALL_Target="/usr/local"
+CONFIG_INSTALL_FLASHINTERFACE="/dev/ttyUSB0"
+# CONFIG_HAS_I2C is not set
