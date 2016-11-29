@@ -558,46 +558,7 @@ main.o: ../FreeRTOS/PEARL/main.cc ../FreeRTOS/FreeRTOS/include/FreeRTOS.h \
  ../common/TaskTimerCommon.h ../FreeRTOS/PEARL/TaskTimer.h \
  ../common/Log.h ../common/Fixed.h ../common/TaskTimerCommon.h \
  ../common/Signals.h ../common/TaskList.h ../FreeRTOS/PEARL/./Task.h \
- Post.h ../cortexM/LPCOpen/lpc_chip/chip_17xx_40xx/chip.h \
- ../cortexM/LPCOpen/lpc_chip/chip_17xx_40xx/../chip_common/lpc_types.h \
- ../cortexM/LPCOpen/lpc_chip/chip_17xx_40xx/sys_config.h \
- ../cortexM/LPCOpen/lpc_chip/chip_17xx_40xx/cmsis.h \
- ../cortexM/LPCOpen/lpc_chip/chip_17xx_40xx/config_175x_6x/cmsis_175x_6x.h \
- ../cortexM/LPCOpen/lpc_chip/chip_17xx_40xx/config_175x_6x/sys_config.h \
- ../cortexM/CMSIS/Include/core_cm3.h \
- ../cortexM/CMSIS/Include/core_cmInstr.h \
- ../cortexM/CMSIS/Include/core_cmFunc.h \
- ../cortexM/LPCOpen/lpc_chip/chip_17xx_40xx/chip_lpc175x_6x.h \
- ../cortexM/LPCOpen/lpc_chip/chip_17xx_40xx/sysctl_17xx_40xx.h \
- ../cortexM/LPCOpen/lpc_chip/chip_17xx_40xx/clock_17xx_40xx.h \
- ../cortexM/LPCOpen/lpc_chip/chip_17xx_40xx/iocon_17xx_40xx.h \
- ../cortexM/LPCOpen/lpc_chip/chip_17xx_40xx/adc_17xx_40xx.h \
- ../cortexM/LPCOpen/lpc_chip/chip_17xx_40xx/can_17xx_40xx.h \
- ../cortexM/LPCOpen/lpc_chip/chip_17xx_40xx/dac_17xx_40xx.h \
- ../cortexM/LPCOpen/lpc_chip/chip_17xx_40xx/enet_17xx_40xx.h \
- ../cortexM/LPCOpen/lpc_chip/chip_17xx_40xx/gpdma_17xx_40xx.h \
- ../cortexM/LPCOpen/lpc_chip/chip_17xx_40xx/gpio_17xx_40xx.h \
- ../cortexM/LPCOpen/lpc_chip/chip_17xx_40xx/gpioint_17xx_40xx.h \
- ../cortexM/LPCOpen/lpc_chip/chip_17xx_40xx/i2c_17xx_40xx.h \
- ../cortexM/LPCOpen/lpc_chip/chip_17xx_40xx/i2s_17xx_40xx.h \
- ../cortexM/LPCOpen/lpc_chip/chip_17xx_40xx/mcpwm_17xx_40xx.h \
- ../cortexM/LPCOpen/lpc_chip/chip_17xx_40xx/pmu_17xx_40xx.h \
- ../cortexM/LPCOpen/lpc_chip/chip_17xx_40xx/qei_17xx_40xx.h \
- ../cortexM/LPCOpen/lpc_chip/chip_17xx_40xx/ritimer_17xx_40xx.h \
- ../cortexM/LPCOpen/lpc_chip/chip_17xx_40xx/rtc_17xx_40xx.h \
- ../cortexM/LPCOpen/lpc_chip/chip_17xx_40xx/spi_17xx_40xx.h \
- ../cortexM/LPCOpen/lpc_chip/chip_17xx_40xx/ssp_17xx_40xx.h \
- ../cortexM/LPCOpen/lpc_chip/chip_17xx_40xx/timer_17xx_40xx.h \
- ../cortexM/LPCOpen/lpc_chip/chip_17xx_40xx/uart_17xx_40xx.h \
- ../cortexM/LPCOpen/lpc_chip/chip_17xx_40xx/../chip_common/ring_buffer.h \
- ../cortexM/LPCOpen/lpc_chip/chip_17xx_40xx/../chip_common/lpc_types.h \
- ../cortexM/LPCOpen/lpc_chip/chip_17xx_40xx/usb_17xx_40xx.h \
- ../cortexM/LPCOpen/lpc_chip/chip_17xx_40xx/wwdt_17xx_40xx.h \
- ../cortexM/LPCOpen/lpc_chip/chip_17xx_40xx/fmc_17xx_40xx.h \
- ../cortexM/LPCOpen/lpc_chip/chip_17xx_40xx/romapi_17xx_40xx.h \
- ../cortexM/LPCOpen/lpc_chip/chip_17xx_40xx/../chip_common/iap.h \
- ../cortexM/LPCOpen/lpc_chip/chip_17xx_40xx/../chip_common/error.h \
- ../FreeRTOS/addOns/./service.h \
+ Post.h ../FreeRTOS/addOns/./service.h \
  ../cortexM/CMSIS/Include/../../../../configuration/include/autoconf.h
 Mutex.o: ../FreeRTOS/PEARL/Mutex.cc \
  ../FreeRTOS/FreeRTOS/include/FreeRTOS.h FreeRTOSConfig.h \
@@ -1271,9 +1232,7 @@ Retarget.o: ../FreeRTOS/addOns/Retarget.cc FreeRTOSConfig.h \
  ../FreeRTOS/FreeRTOS/include/mpu_wrappers.h \
  ../FreeRTOS/FreeRTOS/include/task.h ../FreeRTOS/FreeRTOS/include/list.h \
  ../FreeRTOS/FreeRTOS/include/semphr.h \
- ../FreeRTOS/FreeRTOS/include/queue.h ../FreeRTOS/addOns/Retarget.h \
- SystemConsole.h Lpc17xxUartInternal.h ../FreeRTOS/PEARL/./GenericUart.h \
- ../FreeRTOS/PEARL/./GenericUartDation.h
+ ../FreeRTOS/FreeRTOS/include/queue.h
 Hy32.o: Hy32.cc ../cortexM/LPCOpen/lpc_chip/chip_17xx_40xx/chip.h \
  ../cortexM/LPCOpen/lpc_chip/chip_17xx_40xx/../chip_common/lpc_types.h \
  ../cortexM/LPCOpen/lpc_chip/chip_17xx_40xx/sys_config.h \

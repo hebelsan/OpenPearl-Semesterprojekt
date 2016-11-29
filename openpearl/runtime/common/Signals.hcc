@@ -1,4 +1,4 @@
-/* objDCL : auto generated (Mon Nov 28 14:04:33 2016) */
+/* objDCL : auto generated (Tue Nov 29 09:10:47 2016) */
 InternalSignal theInternalSignal;
 InternalTaskSignal theInternalTaskSignal;
 InternalSignalsSignal theInternalSignalsSignal;
@@ -58,7 +58,7 @@ ExpFormatSignal theExpFormatSignal;
 ExpValueSignal theExpValueSignal;
 
 
-/* objArray : auto generated (Mon Nov 28 14:04:33 2016) */
+/* objArray : auto generated (Tue Nov 29 09:10:47 2016) */
 Signal *sv[] = {
       (Signal*)&theInternalSignal
       , (Signal*)&theInternalTaskSignal

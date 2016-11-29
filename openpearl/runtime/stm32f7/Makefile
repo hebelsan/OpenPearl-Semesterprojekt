@@ -64,7 +64,7 @@ INCS += ../common
 #---------------------------------
 # required parts of stm32f7 HAL
 # directory, includes directories HAL
-STM32F7HAL= ../cortexM/stm32f7HAL
+STM32F7HAL= ../cortexM/system_stm32f7xx.c
 INCS += $(STM32F7HAL)
 #
 #LPCOpen_CSRC += $(LPCOpen)/uart_17xx_40xx.c
@@ -202,7 +202,7 @@ install: all cc_bin run_bin
 phony += cc_bin
 cc_bin:
 	# create cc_bin.inc
-	echo '$(CXX) -DTARGET=2 $(PURECXXFLAGS) $(LFLAGS) $(CONFIG_INSTALL_Target)/lib/OpenPEARLstm32f7_board.o -I $(CONFIG_INSTALL_Target)/include $$fn.cc -o $$fn $(CONFIG_INSTALL_Target)/lib/libOpenPEARLstm32f7.a' > cc_bin.inc 
+	echo '$(CXX) -DTARGET=3 $(PURECXXFLAGS) $(LFLAGS) $(CONFIG_INSTALL_Target)/lib/OpenPEARLstm32f7_board.o -I $(CONFIG_INSTALL_Target)/include $$fn.cc -o $$fn $(CONFIG_INSTALL_Target)/lib/libOpenPEARLstm32f7.a' > cc_bin.inc 
 
 phony += run_bin
 run_bin:

@@ -32,11 +32,11 @@
 #include "FreeRTOS.h"
 #include "task.h"
 #include "semphr.h"
-#include "Retarget.h"
-#include <stdio.h>
+//#include "Retarget.h"
+//#include <stdio.h>
 
-#include "SystemConsole.h"
-
+//#include "SystemConsole.h"
+/*
 extern "C" {
    static pearlrt::GenericUart * console = 0;
    static bool useInterruptFlag = false;
@@ -194,7 +194,7 @@ extern "C" {
          " bx r2				\n"
          " handler2_address_const: .word prvGetRegistersFromStack\n"
       );
-*/
+
       useInterruptFlag = false;
 
       printf("*** Default handler (vector index = %d)\n*** halt ***.\n", exceptNumber & 0x0ff);
@@ -251,3 +251,6 @@ namespace pearlrt {
    }
 }
 
+
+
+*/

@@ -734,3 +734,13 @@ heap_1_2.o: ../FreeRTOS/addOns/heap_1_2.c \
  ../FreeRTOS/FreeRTOS/portable/GCC/ARM_CM3/portmacro.h \
  ../FreeRTOS/FreeRTOS/include/mpu_wrappers.h \
  ../FreeRTOS/FreeRTOS/include/task.h ../FreeRTOS/FreeRTOS/include/list.h
+Retarget.o: ../FreeRTOS/addOns/Retarget.cc FreeRTOSConfig.h \
+ ../FreeRTOS/FreeRTOS/include/FreeRTOS.h \
+ ../FreeRTOS/FreeRTOS/include/projdefs.h \
+ ../FreeRTOS/FreeRTOS/include/portable.h \
+ ../FreeRTOS/FreeRTOS/include/deprecated_definitions.h \
+ ../FreeRTOS/FreeRTOS/portable/GCC/ARM_CM3/portmacro.h \
+ ../FreeRTOS/FreeRTOS/include/mpu_wrappers.h \
+ ../FreeRTOS/FreeRTOS/include/task.h ../FreeRTOS/FreeRTOS/include/list.h \
+ ../FreeRTOS/FreeRTOS/include/semphr.h \
+ ../FreeRTOS/FreeRTOS/include/queue.h
