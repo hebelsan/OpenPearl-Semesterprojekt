@@ -1,4 +1,9 @@
 Signals.o: ../common/Signals.hh
+system_stm32f7xx.o: system_stm32f7xx.c stm32f7xx.h stm32f746xx.h \
+ ../cortexM/CMSIS/Include/core_cm7.h \
+ ../cortexM/CMSIS/Include/core_cmInstr.h \
+ ../cortexM/CMSIS/Include/core_cmFunc.h \
+ ../cortexM/CMSIS/Include/core_cmSimd.h system_stm32f7xx.h
 Stm32f7xxClock.o: Stm32f7xxClock.cc ../common/Log.h \
  ../common/SystemDationNB.h ../common/SystemDation.h ../common/Dation.h \
  ../common/Device.h ../common/Fixed.h ../common/Signals.h \
