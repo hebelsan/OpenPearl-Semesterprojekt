@@ -149,7 +149,7 @@ if [ "$PLATTFORM" = "linux" ] ; then
 rc=$?
 fi
 if [ "$PLATTFORM" = "stm32f7" ] ; then
-  arm-none-eabi-g++ -DTARGET=3 -mthumb -mcpu=cortex-m7 -mtune=cortex-m7  -Wall -Os -ffunction-sections -fdata-sections -g  -DCORE_M7 -Wl,--gc-sections -Wl,-Map=mapfile.map -T OpenPEARLstm32f7.ld -L "/usr/local"/lib/ldscripts -L .  --specs=nosys.specs "/usr/local"/lib/OpenPEARLstm32f7_board.o -I "/usr/local"/include $fn.cc -o $fn "/usr/local"/lib/libOpenPEARLstm32f7.a
+  arm-none-eabi-g++ -DTARGET=3 -mthumb -mcpu=cortex-m7 -mtune=cortex-m7 -mfloat-abi=hard -mfpu=fpv5-sp-d16  -Wall -Os -ffunction-sections -fdata-sections -g  -DCORE_M7 -Wl,--gc-sections -Wl,-Map=mapfile.map -T OpenPEARLstm32f7.ld -L "/usr/local"/lib/ldscripts -L .  --specs=nosys.specs "/usr/local"/lib/OpenPEARLstm32f7_board.o -I "/usr/local"/include $fn.cc -o $fn "/usr/local"/lib/libOpenPEARLstm32f7.a
  
 rc=$?
 fi

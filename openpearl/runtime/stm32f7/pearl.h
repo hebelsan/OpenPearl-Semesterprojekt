@@ -352,15 +352,22 @@ typedef unsigned long UBaseType_t;
 
 
 
-extern void vPortYield( void );
+#define portYIELD()        	\
+{          \
+    	\
+	portNVIC_INT_CTRL_REG = portNVIC_PENDSVSET_BIT;    \
+          \
+   	\
+	__asm volatile( "dsb" );      	\
+	__asm volatile( "isb" );      	\
+}
+
 
 #define portNVIC_INT_CTRL_REG ( * ( ( volatile uint32_t * ) 0xe000ed04 ) )
 
 #define portNVIC_PENDSVSET_BIT ( 1UL << 28UL )
 
-#define portYIELD()  	vPortYield()
-
-#define portEND_SWITCHING_ISR( xSwitchRequired ) if( xSwitchRequired ) portNVIC_INT_CTRL_REG = portNVIC_PENDSVSET_BIT
+#define portEND_SWITCHING_ISR( xSwitchRequired ) if( xSwitchRequired != pdFALSE ) portYIELD()
 
 #define portYIELD_FROM_ISR( x ) portEND_SWITCHING_ISR( x )
 
@@ -368,20 +375,19 @@ extern void vPortYield( void );
 
 extern void vPortEnterCritical( void );
 extern void vPortExitCritical( void );
-extern uint32_t ulPortSetInterruptMask( void );
-extern void vPortClearInterruptMask( uint32_t ulNewMaskValue );
 
-#define portSET_INTERRUPT_MASK_FROM_ISR() ulPortSetInterruptMask()
+#define portSET_INTERRUPT_MASK_FROM_ISR() ulPortRaiseBASEPRI()
 
-#define portCLEAR_INTERRUPT_MASK_FROM_ISR(x)	vPortClearInterruptMask(x)
+#define portCLEAR_INTERRUPT_MASK_FROM_ISR(x)	vPortSetBASEPRI(x)
 
-#define portDISABLE_INTERRUPTS()  ulPortSetInterruptMask()
+#define portDISABLE_INTERRUPTS()  vPortRaiseBASEPRI()
 
-#define portENABLE_INTERRUPTS()  	vPortClearInterruptMask(0)
+#define portENABLE_INTERRUPTS()  	vPortSetBASEPRI(0)
 
 #define portENTER_CRITICAL()  	vPortEnterCritical()
 
 #define portEXIT_CRITICAL()   vPortExitCritical()
+
 
 
 
@@ -442,6 +448,62 @@ extern void vPortClearInterruptMask( uint32_t ulNewMaskValue );
 
 
 #define portNOP()
+
+
+
+#define portFORCE_INLINE inline __attribute__(( always_inline))
+
+
+
+
+portFORCE_INLINE static void vPortRaiseBASEPRI( void )
+{
+uint32_t ulNewBASEPRI;
+
+	__asm volatile
+	(
+ "	mov %0, %1      \n"	\
+ "	cpsid i      	\n" \
+ "	msr basepri, %0     	\n" \
+ "	isb       \n" \
+ "	dsb       \n" \
+ "	cpsie i      	\n" \
+ :"=r" (ulNewBASEPRI) : "i" ( configMAX_SYSCALL_INTERRUPT_PRIORITY )
+	);
+}
+
+
+
+portFORCE_INLINE static uint32_t ulPortRaiseBASEPRI( void )
+{
+uint32_t ulOriginalBASEPRI, ulNewBASEPRI;
+
+	__asm volatile
+	(
+ "	mrs %0, basepri     	\n" \
+ "	mov %1, %2      \n"	\
+ "	cpsid i      	\n" \
+ "	msr basepri, %1     	\n" \
+ "	isb       \n" \
+ "	dsb       \n" \
+ "	cpsie i      	\n" \
+ :"=r" (ulOriginalBASEPRI), "=r" (ulNewBASEPRI) : "i" ( configMAX_SYSCALL_INTERRUPT_PRIORITY )
+	);
+
+	
+	return ulOriginalBASEPRI;
+}
+
+
+portFORCE_INLINE static void vPortSetBASEPRI( uint32_t ulNewMaskValue )
+{
+	__asm volatile
+	(
+ "	msr basepri, %0	" :: "r" ( ulNewMaskValue )
+	);
+}
+
+
 
 
 

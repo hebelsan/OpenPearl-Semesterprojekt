@@ -1,7 +1,7 @@
 
 #include "PearlIncludes.h"
 #include "stm32f7xx_hal_rcc.h"
- 
+
 
 //Quick hack, approximately 1ms delay
 void ms_delay(int ms)

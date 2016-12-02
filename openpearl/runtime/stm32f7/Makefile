@@ -35,7 +35,7 @@ targets := OpenPEARLstm32f7_board.o libOpenPEARLstm32f7.a
 INCS += ../cortexM/CMSIS/Include
 
 # -------------------- add FreeRTOS support to project
-include ../FreeRTOS/FreeRTOS/Files
+include ../FreeRTOS/FreeRTOS/Files.cm7
 CSRC += $(addprefix ../FreeRTOS/FreeRTOS/,$(RTOSCSRC))
 INCS += $(addprefix ../FreeRTOS/FreeRTOS/,$(RTOSINCS))
 
@@ -64,10 +64,8 @@ INCS += ../common
 #---------------------------------
 # required parts of stm32f7 HAL
 # directory, includes directories HAL
-STM32F7HAL_Inc= ../cortexM/stm32f7HAL/Inc/
-INCS += $(STM32F7HAL_Inc)
-STM32F7HAL_Src= ../cortexM/stm32f7HAL/Src/
-INCS += $(STM32F7HAL_Src)
+STM32F7HAL = ../cortexM/stm32f7HAL/Inc
+INCS += $(STM32F7HAL)
 #
 #LPCOpen_CSRC += $(LPCOpen)/uart_17xx_40xx.c
 #LPCOpen_CSRC += $(LPCOpen)/chip_17xx_40xx.c

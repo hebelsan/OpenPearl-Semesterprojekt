@@ -19,7 +19,7 @@ CSema.o: ../FreeRTOS/PEARL/CSema.cc ../FreeRTOS/PEARL/./CSema.h \
  FreeRTOSConfig.h ../FreeRTOS/FreeRTOS/include/projdefs.h \
  ../FreeRTOS/FreeRTOS/include/portable.h \
  ../FreeRTOS/FreeRTOS/include/deprecated_definitions.h \
- ../FreeRTOS/FreeRTOS/portable/GCC/ARM_CM3/portmacro.h \
+ ../FreeRTOS/FreeRTOS/portable/GCC/ARM_CM7/r0p1/portmacro.h \
  ../FreeRTOS/FreeRTOS/include/mpu_wrappers.h \
  ../FreeRTOS/FreeRTOS/include/semphr.h \
  ../FreeRTOS/FreeRTOS/include/queue.h ../common/Log.h \
@@ -43,7 +43,7 @@ Log.o: ../FreeRTOS/PEARL/Log.cc ../common/Clock.h ../common/Fixed63.h \
  ../FreeRTOS/FreeRTOS/include/projdefs.h \
  ../FreeRTOS/FreeRTOS/include/portable.h \
  ../FreeRTOS/FreeRTOS/include/deprecated_definitions.h \
- ../FreeRTOS/FreeRTOS/portable/GCC/ARM_CM3/portmacro.h \
+ ../FreeRTOS/FreeRTOS/portable/GCC/ARM_CM7/r0p1/portmacro.h \
  ../FreeRTOS/FreeRTOS/include/mpu_wrappers.h \
  ../FreeRTOS/FreeRTOS/include/semphr.h \
  ../FreeRTOS/FreeRTOS/include/queue.h ../common/MutexCommon.h \
@@ -52,7 +52,7 @@ main.o: ../FreeRTOS/PEARL/main.cc ../FreeRTOS/FreeRTOS/include/FreeRTOS.h \
  FreeRTOSConfig.h ../FreeRTOS/FreeRTOS/include/projdefs.h \
  ../FreeRTOS/FreeRTOS/include/portable.h \
  ../FreeRTOS/FreeRTOS/include/deprecated_definitions.h \
- ../FreeRTOS/FreeRTOS/portable/GCC/ARM_CM3/portmacro.h \
+ ../FreeRTOS/FreeRTOS/portable/GCC/ARM_CM7/r0p1/portmacro.h \
  ../FreeRTOS/FreeRTOS/include/mpu_wrappers.h \
  ../FreeRTOS/FreeRTOS/include/queue.h ../FreeRTOS/FreeRTOS/include/task.h \
  ../FreeRTOS/FreeRTOS/include/list.h \
@@ -81,7 +81,7 @@ Mutex.o: ../FreeRTOS/PEARL/Mutex.cc \
  ../FreeRTOS/FreeRTOS/include/projdefs.h \
  ../FreeRTOS/FreeRTOS/include/portable.h \
  ../FreeRTOS/FreeRTOS/include/deprecated_definitions.h \
- ../FreeRTOS/FreeRTOS/portable/GCC/ARM_CM3/portmacro.h \
+ ../FreeRTOS/FreeRTOS/portable/GCC/ARM_CM7/r0p1/portmacro.h \
  ../FreeRTOS/FreeRTOS/include/mpu_wrappers.h \
  ../FreeRTOS/FreeRTOS/include/semphr.h \
  ../FreeRTOS/FreeRTOS/include/queue.h ../FreeRTOS/PEARL/Mutex.h \
@@ -103,7 +103,7 @@ PrioMapper.o: ../FreeRTOS/PEARL/PrioMapper.cc ../common/Log.h \
  ../FreeRTOS/FreeRTOS/include/projdefs.h \
  ../FreeRTOS/FreeRTOS/include/portable.h \
  ../FreeRTOS/FreeRTOS/include/deprecated_definitions.h \
- ../FreeRTOS/FreeRTOS/portable/GCC/ARM_CM3/portmacro.h \
+ ../FreeRTOS/FreeRTOS/portable/GCC/ARM_CM7/r0p1/portmacro.h \
  ../FreeRTOS/FreeRTOS/include/mpu_wrappers.h allTaskPriorities.h \
  FreeRTOSConfig.h
 Task.o: ../FreeRTOS/PEARL/Task.cc ../FreeRTOS/PEARL/Task.h \
@@ -122,7 +122,7 @@ Task.o: ../FreeRTOS/PEARL/Task.cc ../FreeRTOS/PEARL/Task.h \
  ../FreeRTOS/FreeRTOS/include/projdefs.h \
  ../FreeRTOS/FreeRTOS/include/portable.h \
  ../FreeRTOS/FreeRTOS/include/deprecated_definitions.h \
- ../FreeRTOS/FreeRTOS/portable/GCC/ARM_CM3/portmacro.h \
+ ../FreeRTOS/FreeRTOS/portable/GCC/ARM_CM7/r0p1/portmacro.h \
  ../FreeRTOS/FreeRTOS/include/mpu_wrappers.h \
  ../FreeRTOS/FreeRTOS/include/semphr.h \
  ../FreeRTOS/FreeRTOS/include/queue.h ../common/MutexCommon.h \
@@ -141,7 +141,7 @@ TaskMonitor.o: ../FreeRTOS/PEARL/TaskMonitor.cc ../common/TaskMonitor.h \
  FreeRTOSConfig.h ../FreeRTOS/FreeRTOS/include/projdefs.h \
  ../FreeRTOS/FreeRTOS/include/portable.h \
  ../FreeRTOS/FreeRTOS/include/deprecated_definitions.h \
- ../FreeRTOS/FreeRTOS/portable/GCC/ARM_CM3/portmacro.h \
+ ../FreeRTOS/FreeRTOS/portable/GCC/ARM_CM7/r0p1/portmacro.h \
  ../FreeRTOS/FreeRTOS/include/mpu_wrappers.h \
  ../FreeRTOS/FreeRTOS/include/semphr.h \
  ../FreeRTOS/FreeRTOS/include/queue.h ../common/MutexCommon.h \
@@ -166,7 +166,7 @@ TaskTimer.o: ../FreeRTOS/PEARL/TaskTimer.cc ../common/Signals.h \
  ../FreeRTOS/FreeRTOS/include/projdefs.h \
  ../FreeRTOS/FreeRTOS/include/portable.h \
  ../FreeRTOS/FreeRTOS/include/deprecated_definitions.h \
- ../FreeRTOS/FreeRTOS/portable/GCC/ARM_CM3/portmacro.h \
+ ../FreeRTOS/FreeRTOS/portable/GCC/ARM_CM7/r0p1/portmacro.h \
  ../FreeRTOS/FreeRTOS/include/mpu_wrappers.h \
  ../FreeRTOS/FreeRTOS/include/semphr.h \
  ../FreeRTOS/FreeRTOS/include/queue.h ../common/MutexCommon.h \
@@ -181,7 +181,7 @@ GenericUart.o: ../FreeRTOS/PEARL/GenericUart.cc FreeRTOSConfig.h \
  ../FreeRTOS/FreeRTOS/include/projdefs.h \
  ../FreeRTOS/FreeRTOS/include/portable.h \
  ../FreeRTOS/FreeRTOS/include/deprecated_definitions.h \
- ../FreeRTOS/FreeRTOS/portable/GCC/ARM_CM3/portmacro.h \
+ ../FreeRTOS/FreeRTOS/portable/GCC/ARM_CM7/r0p1/portmacro.h \
  ../FreeRTOS/FreeRTOS/include/mpu_wrappers.h \
  ../FreeRTOS/PEARL/GenericUart.h ../FreeRTOS/PEARL/GenericUartDation.h \
  ../FreeRTOS/addOns/./Retarget.h ../FreeRTOS/FreeRTOS/include/task.h \
@@ -193,7 +193,7 @@ CortexMClock.o: ../FreeRTOS/addOns/CortexMClock.cc \
  FreeRTOSConfig.h ../FreeRTOS/FreeRTOS/include/projdefs.h \
  ../FreeRTOS/FreeRTOS/include/portable.h \
  ../FreeRTOS/FreeRTOS/include/deprecated_definitions.h \
- ../FreeRTOS/FreeRTOS/portable/GCC/ARM_CM3/portmacro.h \
+ ../FreeRTOS/FreeRTOS/portable/GCC/ARM_CM7/r0p1/portmacro.h \
  ../FreeRTOS/FreeRTOS/include/mpu_wrappers.h \
  ../FreeRTOS/addOns/CortexMClock.h
 Array.o: ../common/Array.cc ../common/Array.h ../common/Fixed.h \
@@ -295,7 +295,7 @@ Interrupt.o: ../common/Interrupt.cc ../common/Interrupt.h \
  FreeRTOSConfig.h ../FreeRTOS/FreeRTOS/include/projdefs.h \
  ../FreeRTOS/FreeRTOS/include/portable.h \
  ../FreeRTOS/FreeRTOS/include/deprecated_definitions.h \
- ../FreeRTOS/FreeRTOS/portable/GCC/ARM_CM3/portmacro.h \
+ ../FreeRTOS/FreeRTOS/portable/GCC/ARM_CM7/r0p1/portmacro.h \
  ../FreeRTOS/FreeRTOS/include/mpu_wrappers.h \
  ../FreeRTOS/FreeRTOS/include/semphr.h \
  ../FreeRTOS/FreeRTOS/include/queue.h ../common/MutexCommon.h \
@@ -379,7 +379,7 @@ TaskCommon.o: ../common/TaskCommon.cc ../FreeRTOS/PEARL/./Task.h \
  ../FreeRTOS/FreeRTOS/include/projdefs.h \
  ../FreeRTOS/FreeRTOS/include/portable.h \
  ../FreeRTOS/FreeRTOS/include/deprecated_definitions.h \
- ../FreeRTOS/FreeRTOS/portable/GCC/ARM_CM3/portmacro.h \
+ ../FreeRTOS/FreeRTOS/portable/GCC/ARM_CM7/r0p1/portmacro.h \
  ../FreeRTOS/FreeRTOS/include/mpu_wrappers.h \
  ../FreeRTOS/FreeRTOS/include/semphr.h \
  ../FreeRTOS/FreeRTOS/include/queue.h ../common/MutexCommon.h \
@@ -407,7 +407,7 @@ TaskList.o: ../common/TaskList.cc ../common/TaskList.h \
  ../FreeRTOS/FreeRTOS/include/projdefs.h \
  ../FreeRTOS/FreeRTOS/include/portable.h \
  ../FreeRTOS/FreeRTOS/include/deprecated_definitions.h \
- ../FreeRTOS/FreeRTOS/portable/GCC/ARM_CM3/portmacro.h \
+ ../FreeRTOS/FreeRTOS/portable/GCC/ARM_CM7/r0p1/portmacro.h \
  ../FreeRTOS/FreeRTOS/include/mpu_wrappers.h \
  ../FreeRTOS/FreeRTOS/include/semphr.h \
  ../FreeRTOS/FreeRTOS/include/queue.h ../common/MutexCommon.h \
@@ -422,7 +422,7 @@ TaskMonitor.o: ../common/TaskMonitor.cc ../common/TaskMonitor.h \
  FreeRTOSConfig.h ../FreeRTOS/FreeRTOS/include/projdefs.h \
  ../FreeRTOS/FreeRTOS/include/portable.h \
  ../FreeRTOS/FreeRTOS/include/deprecated_definitions.h \
- ../FreeRTOS/FreeRTOS/portable/GCC/ARM_CM3/portmacro.h \
+ ../FreeRTOS/FreeRTOS/portable/GCC/ARM_CM7/r0p1/portmacro.h \
  ../FreeRTOS/FreeRTOS/include/mpu_wrappers.h \
  ../FreeRTOS/FreeRTOS/include/semphr.h \
  ../FreeRTOS/FreeRTOS/include/queue.h ../common/MutexCommon.h
@@ -441,7 +441,7 @@ Semaphore.o: ../common/Semaphore.cc ../common/TaskCommon.h \
  FreeRTOSConfig.h ../FreeRTOS/FreeRTOS/include/projdefs.h \
  ../FreeRTOS/FreeRTOS/include/portable.h \
  ../FreeRTOS/FreeRTOS/include/deprecated_definitions.h \
- ../FreeRTOS/FreeRTOS/portable/GCC/ARM_CM3/portmacro.h \
+ ../FreeRTOS/FreeRTOS/portable/GCC/ARM_CM7/r0p1/portmacro.h \
  ../FreeRTOS/FreeRTOS/include/mpu_wrappers.h \
  ../FreeRTOS/FreeRTOS/include/semphr.h \
  ../FreeRTOS/FreeRTOS/include/queue.h ../common/MutexCommon.h \
@@ -467,7 +467,7 @@ PriorityQueue.o: ../common/PriorityQueue.cc ../common/PriorityQueue.h \
  FreeRTOSConfig.h ../FreeRTOS/FreeRTOS/include/projdefs.h \
  ../FreeRTOS/FreeRTOS/include/portable.h \
  ../FreeRTOS/FreeRTOS/include/deprecated_definitions.h \
- ../FreeRTOS/FreeRTOS/portable/GCC/ARM_CM3/portmacro.h \
+ ../FreeRTOS/FreeRTOS/portable/GCC/ARM_CM7/r0p1/portmacro.h \
  ../FreeRTOS/FreeRTOS/include/mpu_wrappers.h \
  ../FreeRTOS/FreeRTOS/include/semphr.h \
  ../FreeRTOS/FreeRTOS/include/queue.h ../common/MutexCommon.h \
@@ -482,7 +482,7 @@ DationRW.o: ../common/DationRW.cc ../common/Dation.h ../common/Device.h \
  ../FreeRTOS/FreeRTOS/include/projdefs.h \
  ../FreeRTOS/FreeRTOS/include/portable.h \
  ../FreeRTOS/FreeRTOS/include/deprecated_definitions.h \
- ../FreeRTOS/FreeRTOS/portable/GCC/ARM_CM3/portmacro.h \
+ ../FreeRTOS/FreeRTOS/portable/GCC/ARM_CM7/r0p1/portmacro.h \
  ../FreeRTOS/FreeRTOS/include/mpu_wrappers.h \
  ../FreeRTOS/FreeRTOS/include/semphr.h \
  ../FreeRTOS/FreeRTOS/include/queue.h ../common/MutexCommon.h \
@@ -503,7 +503,7 @@ DationPG.o: ../common/DationPG.cc ../common/Dation.h ../common/Device.h \
  ../FreeRTOS/FreeRTOS/include/projdefs.h \
  ../FreeRTOS/FreeRTOS/include/portable.h \
  ../FreeRTOS/FreeRTOS/include/deprecated_definitions.h \
- ../FreeRTOS/FreeRTOS/portable/GCC/ARM_CM3/portmacro.h \
+ ../FreeRTOS/FreeRTOS/portable/GCC/ARM_CM7/r0p1/portmacro.h \
  ../FreeRTOS/FreeRTOS/include/mpu_wrappers.h \
  ../FreeRTOS/FreeRTOS/include/semphr.h \
  ../FreeRTOS/FreeRTOS/include/queue.h ../common/MutexCommon.h \
@@ -529,7 +529,7 @@ DationTS.o: ../common/DationTS.cc ../common/Dation.h ../common/Device.h \
  ../FreeRTOS/FreeRTOS/include/projdefs.h \
  ../FreeRTOS/FreeRTOS/include/portable.h \
  ../FreeRTOS/FreeRTOS/include/deprecated_definitions.h \
- ../FreeRTOS/FreeRTOS/portable/GCC/ARM_CM3/portmacro.h \
+ ../FreeRTOS/FreeRTOS/portable/GCC/ARM_CM7/r0p1/portmacro.h \
  ../FreeRTOS/FreeRTOS/include/mpu_wrappers.h \
  ../FreeRTOS/FreeRTOS/include/semphr.h \
  ../FreeRTOS/FreeRTOS/include/queue.h ../common/MutexCommon.h \
@@ -550,7 +550,7 @@ UserDationNB.o: ../common/UserDationNB.cc ../common/UserDationNB.h \
  ../FreeRTOS/FreeRTOS/include/projdefs.h \
  ../FreeRTOS/FreeRTOS/include/portable.h \
  ../FreeRTOS/FreeRTOS/include/deprecated_definitions.h \
- ../FreeRTOS/FreeRTOS/portable/GCC/ARM_CM3/portmacro.h \
+ ../FreeRTOS/FreeRTOS/portable/GCC/ARM_CM7/r0p1/portmacro.h \
  ../FreeRTOS/FreeRTOS/include/mpu_wrappers.h \
  ../FreeRTOS/FreeRTOS/include/semphr.h \
  ../FreeRTOS/FreeRTOS/include/queue.h ../common/MutexCommon.h \
@@ -567,7 +567,7 @@ UserDation.o: ../common/UserDation.cc ../common/UserDation.h \
  FreeRTOSConfig.h ../FreeRTOS/FreeRTOS/include/projdefs.h \
  ../FreeRTOS/FreeRTOS/include/portable.h \
  ../FreeRTOS/FreeRTOS/include/deprecated_definitions.h \
- ../FreeRTOS/FreeRTOS/portable/GCC/ARM_CM3/portmacro.h \
+ ../FreeRTOS/FreeRTOS/portable/GCC/ARM_CM7/r0p1/portmacro.h \
  ../FreeRTOS/FreeRTOS/include/mpu_wrappers.h \
  ../FreeRTOS/FreeRTOS/include/semphr.h \
  ../FreeRTOS/FreeRTOS/include/queue.h ../common/MutexCommon.h \
@@ -642,7 +642,7 @@ tasks.o: ../FreeRTOS/FreeRTOS/tasks.c \
  ../FreeRTOS/FreeRTOS/include/projdefs.h \
  ../FreeRTOS/FreeRTOS/include/portable.h \
  ../FreeRTOS/FreeRTOS/include/deprecated_definitions.h \
- ../FreeRTOS/FreeRTOS/portable/GCC/ARM_CM3/portmacro.h \
+ ../FreeRTOS/FreeRTOS/portable/GCC/ARM_CM7/r0p1/portmacro.h \
  ../FreeRTOS/FreeRTOS/include/mpu_wrappers.h \
  ../FreeRTOS/FreeRTOS/include/task.h ../FreeRTOS/FreeRTOS/include/list.h \
  ../FreeRTOS/FreeRTOS/include/timers.h \
@@ -653,7 +653,7 @@ list.o: ../FreeRTOS/FreeRTOS/list.c \
  ../FreeRTOS/FreeRTOS/include/projdefs.h \
  ../FreeRTOS/FreeRTOS/include/portable.h \
  ../FreeRTOS/FreeRTOS/include/deprecated_definitions.h \
- ../FreeRTOS/FreeRTOS/portable/GCC/ARM_CM3/portmacro.h \
+ ../FreeRTOS/FreeRTOS/portable/GCC/ARM_CM7/r0p1/portmacro.h \
  ../FreeRTOS/FreeRTOS/include/mpu_wrappers.h \
  ../FreeRTOS/FreeRTOS/include/list.h
 queue.o: ../FreeRTOS/FreeRTOS/queue.c \
@@ -661,16 +661,16 @@ queue.o: ../FreeRTOS/FreeRTOS/queue.c \
  ../FreeRTOS/FreeRTOS/include/projdefs.h \
  ../FreeRTOS/FreeRTOS/include/portable.h \
  ../FreeRTOS/FreeRTOS/include/deprecated_definitions.h \
- ../FreeRTOS/FreeRTOS/portable/GCC/ARM_CM3/portmacro.h \
+ ../FreeRTOS/FreeRTOS/portable/GCC/ARM_CM7/r0p1/portmacro.h \
  ../FreeRTOS/FreeRTOS/include/mpu_wrappers.h \
  ../FreeRTOS/FreeRTOS/include/task.h ../FreeRTOS/FreeRTOS/include/list.h \
  ../FreeRTOS/FreeRTOS/include/queue.h
-port.o: ../FreeRTOS/FreeRTOS/portable/GCC/ARM_CM3/port.c \
+port.o: ../FreeRTOS/FreeRTOS/portable/GCC/ARM_CM7/r0p1/port.c \
  ../FreeRTOS/FreeRTOS/include/FreeRTOS.h FreeRTOSConfig.h \
  ../FreeRTOS/FreeRTOS/include/projdefs.h \
  ../FreeRTOS/FreeRTOS/include/portable.h \
  ../FreeRTOS/FreeRTOS/include/deprecated_definitions.h \
- ../FreeRTOS/FreeRTOS/portable/GCC/ARM_CM3/portmacro.h \
+ ../FreeRTOS/FreeRTOS/portable/GCC/ARM_CM7/r0p1/portmacro.h \
  ../FreeRTOS/FreeRTOS/include/mpu_wrappers.h \
  ../FreeRTOS/FreeRTOS/include/task.h ../FreeRTOS/FreeRTOS/include/list.h
 assert.o: ../FreeRTOS/addOns/assert.c
@@ -680,7 +680,7 @@ FreeRTOSClock.o: ../FreeRTOS/addOns/FreeRTOSClock.cc \
  FreeRTOSConfig.h ../FreeRTOS/FreeRTOS/include/projdefs.h \
  ../FreeRTOS/FreeRTOS/include/portable.h \
  ../FreeRTOS/FreeRTOS/include/deprecated_definitions.h \
- ../FreeRTOS/FreeRTOS/portable/GCC/ARM_CM3/portmacro.h \
+ ../FreeRTOS/FreeRTOS/portable/GCC/ARM_CM7/r0p1/portmacro.h \
  ../FreeRTOS/FreeRTOS/include/mpu_wrappers.h \
  ../FreeRTOS/addOns/FreeRTOSClock.h
 FreeRTOSHooks.o: ../FreeRTOS/addOns/FreeRTOSHooks.cc ../common/TaskList.h \
@@ -699,7 +699,7 @@ FreeRTOSHooks.o: ../FreeRTOS/addOns/FreeRTOSHooks.cc ../common/TaskList.h \
  ../FreeRTOS/FreeRTOS/include/projdefs.h \
  ../FreeRTOS/FreeRTOS/include/portable.h \
  ../FreeRTOS/FreeRTOS/include/deprecated_definitions.h \
- ../FreeRTOS/FreeRTOS/portable/GCC/ARM_CM3/portmacro.h \
+ ../FreeRTOS/FreeRTOS/portable/GCC/ARM_CM7/r0p1/portmacro.h \
  ../FreeRTOS/FreeRTOS/include/mpu_wrappers.h \
  ../FreeRTOS/FreeRTOS/include/semphr.h \
  ../FreeRTOS/FreeRTOS/include/queue.h ../common/MutexCommon.h \
@@ -714,7 +714,7 @@ timer.o: ../FreeRTOS/addOns/timer.c \
  ../FreeRTOS/FreeRTOS/include/projdefs.h \
  ../FreeRTOS/FreeRTOS/include/portable.h \
  ../FreeRTOS/FreeRTOS/include/deprecated_definitions.h \
- ../FreeRTOS/FreeRTOS/portable/GCC/ARM_CM3/portmacro.h \
+ ../FreeRTOS/FreeRTOS/portable/GCC/ARM_CM7/r0p1/portmacro.h \
  ../FreeRTOS/FreeRTOS/include/mpu_wrappers.h \
  ../FreeRTOS/FreeRTOS/include/task.h ../FreeRTOS/FreeRTOS/include/list.h \
  ../FreeRTOS/FreeRTOS/include/queue.h ../FreeRTOS/addOns/time_addons.h \
@@ -725,7 +725,7 @@ service.o: ../FreeRTOS/addOns/service.c \
  ../FreeRTOS/FreeRTOS/include/projdefs.h \
  ../FreeRTOS/FreeRTOS/include/portable.h \
  ../FreeRTOS/FreeRTOS/include/deprecated_definitions.h \
- ../FreeRTOS/FreeRTOS/portable/GCC/ARM_CM3/portmacro.h \
+ ../FreeRTOS/FreeRTOS/portable/GCC/ARM_CM7/r0p1/portmacro.h \
  ../FreeRTOS/FreeRTOS/include/mpu_wrappers.h \
  ../FreeRTOS/FreeRTOS/include/task.h ../FreeRTOS/FreeRTOS/include/list.h \
  ../FreeRTOS/FreeRTOS/include/queue.h ../FreeRTOS/addOns/time_addons.h \
@@ -736,7 +736,7 @@ heap_1_2.o: ../FreeRTOS/addOns/heap_1_2.c \
  ../FreeRTOS/FreeRTOS/include/projdefs.h \
  ../FreeRTOS/FreeRTOS/include/portable.h \
  ../FreeRTOS/FreeRTOS/include/deprecated_definitions.h \
- ../FreeRTOS/FreeRTOS/portable/GCC/ARM_CM3/portmacro.h \
+ ../FreeRTOS/FreeRTOS/portable/GCC/ARM_CM7/r0p1/portmacro.h \
  ../FreeRTOS/FreeRTOS/include/mpu_wrappers.h \
  ../FreeRTOS/FreeRTOS/include/task.h ../FreeRTOS/FreeRTOS/include/list.h
 Retarget.o: ../FreeRTOS/addOns/Retarget.cc FreeRTOSConfig.h \
@@ -744,7 +744,7 @@ Retarget.o: ../FreeRTOS/addOns/Retarget.cc FreeRTOSConfig.h \
  ../FreeRTOS/FreeRTOS/include/projdefs.h \
  ../FreeRTOS/FreeRTOS/include/portable.h \
  ../FreeRTOS/FreeRTOS/include/deprecated_definitions.h \
- ../FreeRTOS/FreeRTOS/portable/GCC/ARM_CM3/portmacro.h \
+ ../FreeRTOS/FreeRTOS/portable/GCC/ARM_CM7/r0p1/portmacro.h \
  ../FreeRTOS/FreeRTOS/include/mpu_wrappers.h \
  ../FreeRTOS/FreeRTOS/include/task.h ../FreeRTOS/FreeRTOS/include/list.h \
  ../FreeRTOS/FreeRTOS/include/semphr.h \
