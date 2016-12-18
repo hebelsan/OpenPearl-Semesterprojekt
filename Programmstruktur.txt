@@ -1,0 +1,17 @@
+Wir haben 9 Lichtschranken, 6 Klappen, 1 Messgerät für den Durchmesser der Kugel, 1 Kicker und 1 Waage die wir ansteuern, bzw auslesen können. 
+
+Die erste Lichtschranke (1) ist ganz am Start um zu testen, ob noch Kugeln im Startbereich liegen. Zudem ist am Start die erste Klappe (1), welche die Kugeln am Start zurückhält. 
+Sobald die erste Kugel von der ersten Klappe (1) durchgelassen wird, passiert sie eine weitere Lichtschranke (2) und kommt dann zum Messgerät für den Durchmesser. Die Lichtschranke (2)
+soll dabei testen ob die Kugel auch wirklich bis zum Messgerät kommt und nicht vorher hängen bleibt. Beim Messgerät wird die Kugel von einer weiteren Klappe (2) gestoppt und dann von 
+einem Messgerät gemessen. 
+Sobald der Durchmesser erfasst wurde, wird die Klappe (2) betätigt und die Kugel weitergeschickt. Auf ihrem Weg zur Waage passiert sie eine weitere Lichtschranke (3) um wieder zu testen
+ob die Kugel nirgends hängen bleibt. Sobald die Kugel dann die Lichtschranke (3) passiert hat kann beim Start die nächste losgeschickt werden. 
+Sollte nun die erste Kugel die Waage erreicht haben, so wird das Gewicht von dieser ermittelt. Sollte das geschehen sein, wird die Dichte anhand der beiden ermittelten Daten ermittelt. 
+Dann wird geschaut, welche der 4 Zielklappen (3,4,5,6) geöffnet werden muss um die Kugel richtig einzusortieren. Sollte das geschehen sein, wird die Kugel per Kicker aus der Waage gekickt 
+und wieder ins Rollen gebracht. Dabei testet kurz nach der Waage eine weiter Lichtschranke (4) ob die Kugel auch wirklich aus der Waage gekickt wurde. Falls dies der Fall ist rollt die 
+Kugel nun in die geöffnete Klappe und wird dort von einer weiteren Lichtschranke (5,6,7,8) beim Eintreffen geprüft. Somit ist die Kugel nun einsortiert. Sollte die Dichte der Kugel allerdings 
+auf keine der 4 Zielzustände passen, so wird keine Klappe geöffnet und die Kugel erreicht einen alternativen Zielzustand, in dem nun auch die letzte Lichtschranke (9) prüft ob die Kugel auf dem Weg
+nicht hängengeblieben ist. 
+
+Um mit den Lichtschranken zu testen ob die Kugel wirklich hängen geblieben ist, wird einfach eine gewisse Zeit festgelegt, die die Kugel 
+höchstens brauchen darf für die entsprechenden Strecken. Sollte diese überschritten werden, wird eine Fehlermeldung erzeugt. 
