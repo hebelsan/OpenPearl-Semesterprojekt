@@ -1,0 +1,37 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\author{Jonathan Weißenberger}
+\begin{document}
+\section{Installation der Tools für die Entwicklung mit dem LPC1768}
+Um überhaupt arbeiten zu können habe ich das OpenPEARL-Projekt von SourceForge erneut geklont. Danach wird die Toolchain benötigt für die Kompilation des Projekt und später der eigenen Anwendungen gebraucht wird. In unserem Projekt kommt nach Absprache mit unserem betreuenden Professor Herr Müller Version \verb+gcc-arm-none-eabi-4_9-2014q4+
+ zum Einsatz. 
+Die Version \verb+gcc-arm-none-eabi-5_4-2016q3+
+ erwies sich beim ersten Projektansatz- dem Versuch OpenPEARL für den STM zu portieren als fehlerhaft und unvollständig.
+\section{I2C Treiber LPC1768}
+\subsection{Voraussetzungen für den Treiber}
+Um beim gesamten OpenPEARL-Projekt den Wartungsaufwand zu minimieren haben sich die Entwickler bei der Umsetzung auf ein modulares System entschieden. Das bedeutet, wenn ein hardwarespezifischer Treiber gebraucht wird, müssen nur die verfügbaren Interfaces implementiert werden und an einer anderen Stelle der Treiber bekannt gemacht werden und schon ist das Gerät verwendbar. Die bereits bestehenden FreeRTOS oder Linux-Module greifen dann auf die spezifizierten Interfacefunktionen zu. 
+Die Interfaces, die für den I2C-Treiber implementiert werden mussten beschränken sich auf eines - das 'I2CProvider'-Interface.
+\subsection{Vorgehensweise}
+Bei der Programmierung wurde als Referenz eine Demoapplikation des Herstellers hergenommen. Bei der Applikation wurde jedoch für eine andere Zielplattform entwickelt. Da jedoch die Funktionsbezeichner für unterschiedliche Boards bei den Herstellern ziemlich ähnlich sind, konnte das Beispiel eine gute Hilfestellung bieten. Es wurde klar, welche Funktionsaufrufe üblich und gefordert sind um das richtige Pinverhalten der I2C-Pins zu bekommen. Und überhaupt die Information über vorhandenes Pin-Muxing wurde geliefert. Darüberhinaus stellten sich auch schnell Unterschiede zu den Targets, die LPC11xx, für welches die Referenz verfasst ist, heraus.
+\subsection{Wesentliche Bestandteile des Treibers}
+Alle verwendeten Interfacedefinitionen von OpenPEARL befinden sich im Ordner \verb+./runtime/common+.
+Der beim Projekt eingesetzte I2CProvider besitzt 3 Methoden, die im Treiber umgesetzt werden müssen.
+\begin{verbatim}
+virtual int readData(int adr, int n, uint8_t * data) = 0;
+virtual int writeData(int adr, int n, uint8_t * data) = 0;
+virtual void rdwr(int n, I2CMessage* data) = 0;
+\end{verbatim}
+Um in der Interrupserviceroutine abfragen zu können, ob der Lese-/ oder Schreibvorgang vom Gerät schon beendet wurde, musste in der Bibliothek des I2Cs des LPC1768 eine Funktion ergänzt werden. Alle Bibliotheken der unterstützten Boards basierend auf Cortex-Chips können in \verb+./runtime/cortexM/+ gefunden werden.
+\begin{verbatim}
+INLINE int getStatus(I2C_ID_T id){
+	return (int)i2c[id].mXfer->status;
+}
+\end{verbatim}
+Im wesentlichen ermöglicht die Funktion das Auslesen des Status der I2C-Einheit. 
+\end{document}
