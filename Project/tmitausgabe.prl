@@ -1,0 +1,689 @@
+
+MODULE(Sorting algortihmus with GUI);
+! i/o configuration of the HFU ball sorter machine
+
+SYSTEM;
+  termout: StdOut;
+
+__cpp__(
+'static pearlrt::I2CBus s_i2cbus((char*)"/dev/i2c-1");'
+
+'pearlrt::ADS1015SE s_channel0(&s_i2cbus, 0x48,0,0);'
+'pearlrt::Device*  d_channel0 = &s_channel0;'
+
+'extern pearlrt::Device* d_channel0;'
+'pearlrt::SystemDationB * _channel0 = (pearlrt::SystemDationB*) d_channel0;'
+
+'pearlrt::ADS1015SE s_channel1(&s_i2cbus, 0x48,1,2);'
+'pearlrt::Device*  d_channel1 = &s_channel1;'
+
+'extern pearlrt::Device* d_channel1;'
+'pearlrt::SystemDationB * _channel1 = (pearlrt::SystemDationB*) d_channel1;'
+
+'static pearlrt::PCF8574Out s_hm_1_7(&s_i2cbus, 0x22, 6, 7);'
+'pearlrt::Device * d_hm_1_7 = &s_hm_1_7;'
+'pearlrt::SystemDationB * _hm1_7 = (pearlrt::SystemDationB*) d_hm_1_7;'
+
+'static pearlrt::PCF8574In s_ls1_8(& s_i2cbus, 0x20, 7, 8);'
+'pearlrt::Device * d_ls1_8 = &s_ls1_8;'
+'pearlrt::SystemDationB * _ls1_8 = (pearlrt::SystemDationB*) d_ls1_8;'
+
+'static pearlrt::PCF8574In s_ls9(& s_i2cbus, 0x21, 0, 1);'
+'pearlrt::Device * d_ls9 = &s_ls9;'
+'pearlrt::SystemDationB * _ls9 = (pearlrt::SystemDationB*) d_ls9;'
+
+'static pearlrt::PCF8574In s_error(& s_i2cbus, 0x21, 4, 1);'
+'pearlrt::Device * d_error = &s_error;'
+'pearlrt::SystemDationB * _error = (pearlrt::SystemDationB*) d_error;'
+
+'static pearlrt::PCF8574Out s_fahr(& s_i2cbus, 0x21, 6, 2);'
+'pearlrt::Device * d_fahr = &s_fahr;'
+'pearlrt::SystemDationB * _fahr = (pearlrt::SystemDationB*) d_fahr;'
+
+'static pearlrt::PCF8574In s_esNotaus(& s_i2cbus, 0x21, 3, 1);'
+'pearlrt::Device * d_esNotaus = &s_esNotaus;'
+'pearlrt::SystemDationB * _esNotaus = (pearlrt::SystemDationB*) d_esNotaus;'
+
+'static pearlrt::PCF8574In s_esAuf(& s_i2cbus, 0x21, 1, 1);'
+'pearlrt::Device * d_esAuf = &s_esAuf;'
+'pearlrt::SystemDationB * _esAuf = (pearlrt::SystemDationB*) d_esAuf;'
+
+'static pearlrt::PCF8574In s_esZu(& s_i2cbus, 0x21, 2, 1);'
+'pearlrt::Device * d_esZu = &s_esZu;'
+'pearlrt::SystemDationB * _esZu = (pearlrt::SystemDationB*) d_esZu;'
+);
+
+PROBLEM;
+ 
+! Farben und konstanten für die Ausgabe 
+__cpp__(' pearlrt::Character<5> _black("\\033[30m");');
+__cpp__(' pearlrt::Character<5> _red("\\033[31m");');
+__cpp__(' pearlrt::Character<5> _green("\\033[32m");');
+__cpp__(' pearlrt::Character<5> _yellow("\\033[33m");');
+__cpp__(' pearlrt::Character<5> _blue("\\033[34m");');
+__cpp__(' pearlrt::Character<5> _magenta("\\033[35m");');
+__cpp__(' pearlrt::Character<5> _cyan("\\033[36m");');
+__cpp__(' pearlrt::Character<5> _white("\\033[37m");');
+__cpp__(' pearlrt::Character<5> _bgblack("\\033[40m");');
+__cpp__(' pearlrt::Character<5> _bgred("\\033[41m");');
+__cpp__(' pearlrt::Character<5> _bggreen("\\033[42m");');
+__cpp__(' pearlrt::Character<5> _bgyellow("\\033[43m");');
+__cpp__(' pearlrt::Character<5> _bgblue("\\033[44m");');
+__cpp__(' pearlrt::Character<5> _bgmagenta("\\033[45m");');
+__cpp__(' pearlrt::Character<5> _bgcyan("\\033[46m");');
+__cpp__(' pearlrt::Character<5> _bgwhite("\\033[47m");');
+__cpp__(' pearlrt::Character<8> _goto("\\033[00;00H");');
+__cpp__(' pearlrt::Character<4> _clearToEnd("\\033[0J");');
+__cpp__(' pearlrt::Character<4> _clearToBegin("\\033[1J");');
+__cpp__(' pearlrt::Character<4> _clear("\\033[2J");');
+__cpp__(' pearlrt::Character<5> _small("\\033[10m");');
+__cpp__(' pearlrt::Character<5> _big("\\033[11m");');
+
+
+SPC termout DATION OUT SYSTEM ALPHIC GLOBAL;
+
+
+DCL console DATION OUT ALPHIC DIM(*,80) FORWARD NOSTREAM CREATED(termout);
+DCL uls1_8 DATION IN BASIC BIT(8) CREATED(ls1_8);
+DCL uls9   DATION IN BASIC BIT(1) CREATED(ls9);
+DCL uesa   DATION IN BASIC BIT(1) CREATED(esAuf);
+DCL uesz   DATION IN BASIC BIT(1) CREATED(esZu);
+DCL uerror   DATION IN BASIC BIT(1) CREATED(error);
+DCL uesna  DATION IN BASIC BIT(1) CREATED(esNotaus);
+DCL ufahr DATION OUT BASIC BIT(2) CREATED(fahr);
+DCL uhm1_7 DATION OUT BASIC BIT(7) CREATED(hm1_7);
+
+DCL ch0 DATION IN BASIC FIXED(15) CREATED(channel0);
+DCL v0 FIXED(15);
+
+DCL ch1 DATION IN BASIC FIXED(15) CREATED(channel1);
+DCL v1 FIXED(15);
+
+DCL true BIT(1) INIT('1'B1);
+DCL false BIT(1) INIT('0'B1);
+
+!semaphoren
+DCL commonData SEMA PRESET(1);
+DCL beginn SEMA PRESET(1);
+DCL waagefrei SEMA PRESET(1);
+DCL motorGo SEMA PRESET(0);
+DCL mesdu SEMA PRESET(0);
+DCL mesgew SEMA PRESET(0);
+DCL stossen SEMA PRESET(0);
+DCL motorklappe SEMA PRESET(0);
+DCL sortieren1 SEMA PRESET(0);
+DCL sortieren2 SEMA PRESET(0);
+DCL sortieren3 SEMA PRESET(0);
+DCL sortieren4 SEMA PRESET(0);
+DCL sortieren5 SEMA PRESET(0);
+DCL durchmesserlesen SEMA PRESET(1);
+
+!lichtschranken
+DCL ls BIT(9);
+DCL (l1, l2, l3, l4, l5, l6, l7, l8, l9) BIT(1);
+
+!motor
+DCL (esa,esz,esna,err) BIT(1);
+DCL driveJob BIT(2);
+
+!klappen
+DCL (current, allOff) BIT(7) INIT('0000001'B1, '0000000'B1);
+DCL (k1,k2,k3,k4,k5,k6,k7) BIT(7) INIT('0000001'B1,'0000010'B1,'0000100'B1,'0001000'B1,'0010000'B1,'0100000'B1,'1000000'B1);
+DCL kklein BIT(7) INIT('0001100'B1);
+DCL kholz BIT(7) INIT('0010100'B1);
+DCL kgummi22 BIT(7) INIT('0100100'B1);
+DCL kmetall BIT(7) INIT('1000100'B1);
+
+
+!kugelwerte
+DCL kuduma FIXED(15) INIT(0);  ! analoger KugeldurchmesserWert
+DCL realdu FLOAT INIT(0);  ! echter KugeldurchmesserWert in mm
+DCL realdualt FLOAT INIT(0); !alter durchmesser
+DCL gewa FIXED(15) INIT(0);  ! analoges gewicht
+DCL realgew FLOAT INIT(0);  ! echtes Kugelgewicht in g
+DCL realgewalt FLOAT INIT(0); !altes echtes Kugelgewicht
+DCL dichte FLOAT INIT(0);
+DCL dichtealt FLOAT INIT(0);
+
+!für die ausgabe
+DCL statusBeginn FIXED INIT(1);
+DCL statusWaage FIXED INIT(1);
+DCL statusl1 BIT(1) INIT('0'B1);
+DCL statusDu FIXED INIT(1);
+DCL statusGew FIXED INIT(1);
+DCL statusDi FIXED INIT(1);
+DCL statusK1 FIXED INIT(0); 
+DCL statusK2 FIXED INIT(0);
+DCL statusK3 FIXED INIT(0);
+DCL statusK4 FIXED INIT(0);
+DCL statusK5 FIXED INIT(0);
+
+!Funktion um den Schreibpointer zu setzten
+pgoto: PROC( (line,col) FIXED);
+   DCL ch CHAR(1);
+   DCL l FIXED INIT(3);
+   DCL c FIXED INIT(6);
+   __cpp__(
+       ' int p;'
+       ' p = _l.x;'
+       ' _ch = pearlrt::toChar( (_line.x/10)+\'0\');'
+       ' _goto.setCharAt(p,_ch);'
+       ' _line.x %= 10;'
+       '_ch = pearlrt::toChar(_line.x+\'0\'); '
+       '_goto.setCharAt(p+1,_ch);'
+       ' p = _c.x;'
+       ' _ch = pearlrt::toChar( (_col.x/10)+\'0\');'
+       '_goto.setCharAt(p,_ch);'
+       ' _col.x %= 10;'
+       '_ch = pearlrt::toChar(_col.x+\'0\'); '
+       '_goto.setCharAt(p+1,_ch);'
+   );
+END;
+
+dumpInputs: TASK MAIN;
+  
+  DCL zk1 FIXED INIT(19);
+  DCL zk2 FIXED INIT(19);
+  DCL zk3 FIXED INIT(19);
+  DCL zk4 FIXED INIT(19);
+  DCL zk5 FIXED INIT(19);
+   
+   
+   OPEN console;
+
+   ACTIVATE kicker;
+   ACTIVATE motor;
+   ACTIVATE readInputs;
+   ACTIVATE stoser;
+   ACTIVATE rechner;
+   
+
+   ! Tabelle Aufbauen *************
+  
+   CALL pgoto(1,1);
+   PUT goto,bgcyan,black,clearToEnd TO console BY A,A,A,A;
+ 
+   CALL pgoto(1,50);
+   PUT goto,'Semesterprojekt OpenPearl' TO console BY A,A;
+
+   CALL pgoto(3,1);
+   PUT goto,big,'Neue Kugel:' TO console BY A,A,A,SKIP;
+   
+   CALL pgoto(5,1);
+   PUT goto,'Status Motor:' TO console BY A,A;
+
+   CALL pgoto(6,1);
+   PUT goto,'Neuer DurchmesserWert(cm):' TO console BY A,A,SKIP;
+
+   CALL pgoto(7,1);
+   PUT goto,'Alter DurchmesserWert(cm):' TO console BY A,A;
+
+   CALL pgoto(9,1);
+   PUT  goto,'Status Waage:' TO console BY A,A;
+
+   CALL pgoto(10,1);
+   PUT goto,'Neuestes Gewicht(g):' TO console BY A,A,SKIP;
+
+   CALL pgoto(11,1);
+   PUT goto,'Altes Gewicht(g):' TO console BY A,A,SKIP;
+
+   CALL pgoto(13,1);
+   PUT goto,red,'Neueste Dichte:' TO console BY A,A,A;
+   
+   CALL pgoto(14,1);
+   PUT goto,'Alte Dichte:' TO console BY A,A;
+
+   CALL pgoto(17,1);
+   PUT goto,black,'Kugeln in Klappe1' TO console BY A,A,A,SKIP;
+
+   CALL pgoto(17,23);
+   PUT goto,'Kugeln in Klappe2' TO console BY A,A;
+
+   CALL pgoto(17,46);
+   PUT goto,'Kugeln in Klappe3' TO console BY A,A;
+
+   CALL pgoto(17,69);
+   PUT goto,'Kugeln in Klappe4' TO console BY A,A;
+
+   CALL pgoto(17,92);
+   PUT goto,'Kugeln in Klappe5' TO console BY A,A,SKIP;
+
+   ! Sortiermaschine darstellen ************+
+
+    CALL pgoto(4,70);
+   PUT goto, 'XXXXXX<-XXXXXXX' TO console BY A,A,SKIP; ! kugel auf (4,75)
+
+   CALL pgoto(5,69);
+   PUT goto, 'X' TO console BY A,A,SKIP;
+
+   CALL pgoto(6,65);
+   PUT goto, '-| X |-' TO console BY A,A,SKIP;   ! motor auf (6,68)
+
+   CALL pgoto(7,67);
+   PUT goto, 'X' TO console BY A,A,SKIP;
+
+   CALL pgoto(8,66);
+   PUT goto, 'X' TO console BY A,A,SKIP;
+
+   CALL pgoto(9,66);
+   PUT goto, 'XXXXXXXXXXXXXXXXX<-T' TO console BY A,A,SKIP;   ! waage auf (9,82)
+
+   CALL pgoto(8,85);
+   PUT goto, 'o' TO console BY A,A,SKIP;   ! soll kugel auf waage darstellen
+
+   CALL pgoto(10,81);
+   PUT goto, 'X' TO console BY A,A,SKIP;
+
+   CALL pgoto(11,80);
+   PUT goto, 'X' TO console BY A,A,SKIP;
+
+   CALL pgoto(12,79);
+   PUT goto, 'X' TO console BY A,A,SKIP;
+
+   CALL pgoto(13,78);
+   PUT goto, 'X' TO console BY A,A,SKIP;
+
+
+
+
+   REPEAT
+
+     IF statusl1 NE l1 THEN
+      statusl1 := l1;     
+      IF statusl1 EQ true THEN
+        CALL pgoto(3,30);
+        PUT goto,'belegt' TO console BY A,A,SKIP;
+        CALL pgoto(4,75);
+        PUT red,goto,'O',black,'<-XXXXXXXXXX    ' TO console BY A,A,A,A,A,SKIP;
+      ELSE
+        CALL pgoto(3,30);
+        PUT goto,'frei  ' TO console BY A,A,SKIP;
+        CALL pgoto(4,75);
+        PUT goto,'X<-XX insert ball' TO console BY A,A,SKIP;
+      FIN;
+     FIN;
+    
+     IF statusDu EQ 1 THEN
+      CALL pgoto(7,30);
+      PUT goto,realdualt TO console BY A,F(6,3);
+      CALL pgoto(6,30);
+      PUT goto,realdu TO console BY A,F(6,3);
+      statusDu := 0;
+     FIN;   
+
+     IF statusBeginn EQ 1 THEN
+      CALL pgoto(5,30);
+      PUT goto,'frei  ' TO console BY A,A,SKIP;
+      CALL pgoto(6,65);
+      PUT goto,'-| X |-'  TO console BY A,A,SKIP;
+      statusBeginn := 0;
+     FIN;
+     IF statusBeginn EQ 2 THEN
+      CALL pgoto(5,30);
+      PUT goto,'belegt' TO console BY A,A,SKIP;
+      !CALL pgoto(6,65);
+      !PUT goto,'> |' TO console BY A,A,SKIP;
+      CALL pgoto(6,68);
+      PUT red,goto,'O',black TO console BY A,A,A,A,SKIP;
+      !CALL pgoto(6,69);
+      !PUT goto,'| <'  TO console BY A,A,SKIP;
+      statusBeginn := 0;
+     FIN;
+
+     IF statusWaage EQ 1 THEN
+      CALL pgoto(9,30);
+      PUT  goto,'frei  ' TO console BY A,A,SKIP;
+      CALL pgoto(9,82);
+      PUT goto,'X',black TO console BY A,A,SKIP;
+      statusWaage := 0;
+     FIN; 
+     IF statusWaage EQ 2 THEN
+      CALL pgoto(9,30);
+      PUT  goto,'belegt' TO console BY A,A,SKIP;
+      CALL pgoto(9,82);
+      PUT red,goto,'O',black TO console BY A,A,A,A,SKIP;
+      statusWaage := 0;
+     FIN;
+
+     IF statusGew EQ 1 THEN
+      CALL pgoto(10,30);
+      PUT goto,realgew TO console BY A,F(6,3),SKIP;
+      CALL pgoto(11,30);
+      PUT goto,realgewalt TO console BY A,F(6,3),SKIP;
+      statusGew := 0;
+     FIN;
+
+     IF statusDi EQ 1 THEN
+       CALL pgoto(13,30);
+       PUT red,goto,dichte TO console BY A,A,F(6,3);
+       CALL pgoto(14,30);
+       PUT goto,dichtealt,black TO console BY A,F(6,3),A;
+       statusDi := 0;
+     FIN;
+      
+     IF statusK1 EQ 1 THEN  !die klappe ganz links
+       CALL pgoto(zk1,4);
+       PUT goto,'O ',dichte TO console BY A,A,F(6,3),SKIP;
+       zk1 := zk1 +1;
+       AFTER 0.3 SEC RESUME;
+       statusK1 := 0;
+     FIN;
+
+     IF statusK2 EQ 1 THEN  !die klappe eins rechts von links
+       CALL pgoto(zk2,29);
+       PUT goto,'O ',dichte TO console BY A,A,F(6,3),SKIP;
+       zk2 := zk2 +1;
+       AFTER 0.3 SEC RESUME;
+       statusK2 := 0;
+     FIN;
+
+     IF statusK3 EQ 1 THEN  !die klappe in der mitte
+       CALL pgoto(zk3,49);
+       PUT goto,'O ',dichte TO console BY A,A,F(6,3),SKIP;
+       zk3 := zk3 +1;
+       AFTER 0.3 SEC RESUME;
+       statusK3 := 0;
+     FIN;
+
+     IF statusK4 EQ 1 THEN  !die klappe eins linsk von rechts
+       CALL pgoto(zk4,74);
+       PUT goto,'O ',dichte TO console BY A,A,F(6,3),SKIP;
+       zk4 := zk4 +1;
+       AFTER 0.3 SEC RESUME;
+       statusK4 := 0;
+     FIN;
+
+     IF statusK5 EQ 1 THEN  !die klappe ganz rechts
+       CALL pgoto(zk5,97);
+       PUT goto,'O ',dichte TO console BY A,A,F(6,3),SKIP;
+       zk5 := zk5 +1;
+       AFTER 0.3 SEC RESUME;
+       statusK5 := 0;
+     FIN;
+
+
+    /*
+      PUT 'LS9-1: ', ls TO console BY A,B1(9),SKIP;
+      PUT 'LS-2: ', l2, '  LS-3: ',l3, '    LS-9: ',l9 TO console BY  A,B1(1),A,B(1),A,B1(1);
+      PUT ' DMP : auf: ', esa, ' zu: ', esz, ' notaus: ', esna TO console
+         BY    A,        B1(1), A,    B1(1),   A, B1(1);
+      PUT '  /Error: ' , err TO console BY A, B1(1);
+      PUT '  durchmesr: ', realdu TO console BY A, F(6,3);
+      PUT '  gew: ', realgew TO console BY A, F(6,3);
+      PUT '  Dichte: ', dichte TO console BY A, F(6,3);
+      PUT '  Drive: ' , driveJob TO console BY A, B1(2), SKIP; 
+      AFTER 0.5 SEC RESUME;
+     */
+
+   END;
+END;
+
+
+motor: TASK PRIO 3;
+   DCL (auf,zu,stop) BIT(2) INIT('01'B1, '10'B1, '00'B1);
+   DCL lastJob BIT(2) INIT('11'B1);
+   DCL state FIXED INIT(0);
+
+   OPEN ufahr;
+   
+   OPEN uesa;
+   OPEN uesz;
+   OPEN uesna;
+
+   REPEAT
+      REQUEST motorGo;
+	   REQUEST durchmesserlesen;
+	   AFTER 1 SEC RESUME; !warten bis kugel im motor ist
+           state := 1; ! closing
+	   SEND zu TO ufahr;   !motor schliessen
+
+      WHILE state EQ 1 REPEAT
+       TAKE esz FROM uesz;
+         IF esz EQ true THEN
+           SEND stop TO ufahr;
+           state := 2; ! closed
+         FIN;
+       TAKE esna FROM uesna;
+         IF esna EQ true THEN
+           SEND stop TO ufahr;
+           state := 3; ! notaus
+         FIN;
+       AFTER 0.01 SEC RESUME;
+      END;
+
+      IF state EQ 2 THEN
+          TAKE v0 FROM ch0;
+          kuduma := v0; ! store diameter in common data
+	  RELEASE mesdu; ! jetzt kann mit durchmesser gemessen werden
+          SEND auf TO ufahr;
+          state := 4; ! opening
+      FIN;
+
+      IF state EQ 3 THEN
+           PUT 'no ball ' TO console BY A, SKIP;
+           SEND auf TO ufahr;
+           state := 4; ! opening
+           ! fehlerbehandklung im Ablauf fehlt
+      FIN;
+
+      WHILE state EQ 4 REPEAT
+       TAKE esa FROM uesa;
+         IF esa EQ true THEN
+           SEND stop TO ufahr;
+           state := 0;
+         ELSE     
+          AFTER 0.01 SEC RESUME;
+         FIN;
+      END;
+
+           REQUEST waagefrei;  !klappe geht nur auf, wenn waagefrei
+           SEND k2 TO uhm1_7;
+           statusBeginn := 1;
+           AFTER 1 SEC RESUME;
+           SEND allOff  TO uhm1_7;
+           RELEASE beginn;     ! erste klappe kann geoefnnet werden
+	   RELEASE motorklappe;
+
+
+  END;
+END;
+
+
+readInputs: TASK PRIO 5;
+  
+   !lichtschranken
+   DCL b8 BIT(8);
+   DCL b1 BIT(1);
+   DCL lsVorMotor BIT(1) INIT('0'B1);
+   DCL (oldEsZ, oldEsA, oldESNot) BIT(1) INIT('0'B1, '1'B1, '0'B1);
+   OPEN uls1_8;
+   OPEN uls9;
+
+   !motor
+   OPEN uerror;
+
+   OPEN ch0;
+   OPEN ch1;
+
+   REPEAT
+      REQUEST commonData;
+
+      TAKE b8 FROM uls1_8;
+      TAKE b1 FROM uls9;
+      __cpp__('_ls = _b1.bitCat(_b8);');
+
+      !lichtschranke 1 und neun einzeln auslesen
+      __cpp__(' _l9 = _ls.getBit(1);');
+      __cpp__(' _l1 = _ls.getBit(9);');
+      __cpp__(' _l2 = _ls.getBit(8);');
+      __cpp__(' _l3 = _ls.getBit(7);');
+      __cpp__(' _l4 = _ls.getBit(6);');
+      __cpp__(' _l5 = _ls.getBit(5);');
+      __cpp__(' _l6 = _ls.getBit(4);');     
+      __cpp__(' _l7 = _ls.getBit(3);');
+      __cpp__(' _l8 = _ls.getBit(2);');
+
+      IF lsVorMotor NE l2 THEN
+         lsVorMotor := l2;
+         IF lsVorMotor EQ true THEN
+            RELEASE motorGo;
+         FIN;
+      FIN;
+       IF l5 EQ true THEN
+         statusK5 := 1;
+         RELEASE sortieren5; ! Holzkugel zum klappen schliessen
+      FIN;
+      IF l6 EQ true THEN
+ 	 statusK4 := 1;
+	 RELEASE sortieren1; ! Holzkugel zum klappen schliessen
+      FIN;
+      IF l7 EQ true THEN
+         statusK3 := 1;
+         RELEASE sortieren2; ! Gummi22 zum klappen schliessen
+      FIN;
+      IF l8 EQ true THEN
+	 statusK2 := 1;
+	 RELEASE sortieren3; ! metall
+      FIN;
+      IF l9 EQ true THEN
+         statusK1 := 1;
+         RELEASE sortieren4; ! groesste dichte gummigrau
+      FIN;
+      IF l2 EQ true THEN
+         statusBeginn := 2;
+      FIN;
+      TAKE err FROM uerror;
+      RELEASE commonData;
+      AFTER 0.1 SEC RESUME;
+   END;
+END;
+
+
+
+kicker: TASK PRIO 2;
+  
+   OPEN uhm1_7;
+
+
+    REPEAT
+      IF l1 EQ true THEN
+       REQUEST beginn;
+       SEND k1 TO uhm1_7;
+       AFTER 1 SEC RESUME;
+       SEND allOff  TO uhm1_7;
+       AFTER 3 SEC RESUME; !warten damit nicht gleich wieder die lichtschranke auf true geht
+       !wenn nächste lichtschranke sieht und klappe 2 auf geht kann nächste kugel
+      FIN;        
+	
+    END;
+END;
+
+
+stoser: TASK PRIO 4;
+
+	REPEAT
+	
+         IF l3 EQ true THEN
+          statusWaage := 2;
+          AFTER 4 SEC RESUME;
+	  ! waage gewicht nehmen und ausrechnen
+	
+	  TAKE v1 FROM ch1;
+          gewa := v1; ! store diameter in common data
+          RELEASE mesgew; ! jetzt kann mit durchmesser gemessen werden
+	  
+	  REQUEST stossen; ! erst wenn dichte ausgerechnet ist darf stossen
+          
+	  REQUEST motorklappe; ! Wenn motorklappe wieder zu dann darf
+         
+
+	  IF realdu <= 1.5 THEN ! durchmesser in cm < 1.5 werden in klappe eins
+              SEND kklein TO uhm1_7;
+              RELEASE durchmesserlesen; !durchmesser kann gelesen werden
+              REQUEST sortieren5;
+              SEND allOff TO uhm1_7;
+	      GOTO sprung;
+          FIN;
+
+	  IF dichte < 1 THEN ! Holzkugel
+	    SEND kholz TO uhm1_7;
+	    RELEASE durchmesserlesen; ! durchmesser von neuer kugel kann gelesen werden
+	    REQUEST sortieren1;
+	    SEND allOff TO uhm1_7;
+	  FIN;
+           
+	  IF dichte < 2 THEN ! Gummi22
+            IF dichte > 1 THEN
+              SEND kgummi22 TO uhm1_7;
+	      RELEASE durchmesserlesen; !durchmesser kann gelesen werden
+              REQUEST sortieren2;
+              SEND allOff TO uhm1_7;
+	    FIN;
+          FIN;
+
+	  IF dichte < 4 THEN ! metall
+	    IF dichte > 2 THEN
+	      SEND kmetall TO uhm1_7;
+	      RELEASE durchmesserlesen; ! durchmesser
+	      REQUEST sortieren3;
+	      SEND allOff TO uhm1_7;
+	    FIN;
+     	   FIN;
+
+	   IF dichte >= 4 THEN ! gummigrau
+	      SEND k3 TO uhm1_7;
+	      RELEASE durchmesserlesen; !durchmesser 
+              REQUEST sortieren4;
+              SEND allOff TO uhm1_7;
+           FIN;
+
+   sprung: RELEASE waagefrei;	    
+	   statusWaage := 1; 
+
+         FIN;
+
+        END;
+END;
+
+
+rechner: TASK PRIO 10;
+
+! wie macht man konstante ?
+
+DCL faktorD FLOAT INIT(0.00124016);	
+DCL faktorG FLOAT INIT(0.002360356);
+DCL pi FLOAT INIT(3.14159265); ! 3.14159265359 
+DCL volumen FLOAT INIT(0);
+DCL duhoch3 FLOAT; ! Durchmesser hoch 3
+DCL zwischen FLOAT INIT(0.5235987756);
+
+! Faktor zum umrechnen in reale Durchmesser in mm = 0,00120953 oder 0,00124016
+! Faktor zum umrechnen in reale Gewicht in g = 0,002360356
+! Volumen von kugel = 1/6*PI*d³
+! 1/6*PI = 0.5235987756
+! Dichte = m/V
+
+	REPEAT
+	  REQUEST mesdu; ! messen von Durchmesser
+	  
+	  realdualt := realdu;
+	  realdu := kuduma * faktorD;  ! umrechnen in realen durchmesser
+          realdu := realdu/10; ! umrechnen von mm in cm
+          statusDu := 1;
+
+	  REQUEST mesgew;
+          realgewalt := realgew; ! altes Gewicht einsetzen
+          realgew := gewa * faktorG;  ! umrechnen in reales Gewicht
+	  statusGew := 1;
+
+	  duhoch3 := realdu*realdu*realdu; 
+	  volumen := zwischen * duhoch3;
+	  dichtealt := dichte;	  
+  	  dichte := realgew/volumen;
+	  statusDi := 1;
+
+	  RELEASE stossen;
+	END;
+END;
+
+MODEND;
