@@ -69,7 +69,7 @@
       <attributes> SYSTEM, IN, OUT, INOUT</attributes>
       <DATA>FIXED</DATA>
    </dation>
-<!-- Signals.xml : auto generated (Tue Oct 18 08:31:57 2016) -->
+<!-- Signals.xml : auto generated (Thu Dec  1 12:52:30 2016) -->
    <signal name="InternalSignal"/>
    <signal name="InternalTaskSignal"/>
    <signal name="InternalSignalsSignal"/>

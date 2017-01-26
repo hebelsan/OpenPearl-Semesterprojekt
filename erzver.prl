@@ -1,0 +1,38 @@
+MODULE (erzver);
+
+SYSTEM;
+	stdin: StdIn;
+	stdout: StdOut;
+PROBLEM;
+	SPC stdin DATION IN SYSTEM ALPHIC GLOBAL;	
+	SPC stdout DATION OUT SYSTEM ALPHIC GLOBAL;
+	DCL console DATION OUT ALPHIC DIM (*,80) FORWARD NOCYCL NOSTREAM CREATED(stdout);
+	DCL daten FIXED(15) INIT (0);
+	DCL (free, full) SEMA PRESET (1,0);
+e1: TASK MAIN;
+	FOR i FROM 1 BY 1 TO 20
+	REPEAT
+	 REQUEST free;
+	 daten:=daten+1;
+	OPEN console;
+        PUT daten, ' geschrieben' TO console BY F(13), A(13), SKIP;
+        CLOSE console;
+	 RELEASE full;
+	END;
+END;
+
+v1: TASK MAIN;
+	DCL x FIXED(15) INIT(0);
+	FOR i FROM 1 BY 1 TO 20
+	REPEAT
+	 REQUEST full;
+	 x:= daten;
+	OPEN console;
+	PUT x, ' gelesen' TO console BY F(13), A(13), SKIP;
+	CLOSE console;
+	 RELEASE free;
+	END;
+
+END;
+
+MODEND;
