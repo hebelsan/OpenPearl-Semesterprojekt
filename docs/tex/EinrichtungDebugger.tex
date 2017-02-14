@@ -1,21 +1,4 @@
-\documentclass[12pt,a4paper]{article}
-\usepackage[utf8]{inputenc}
-\usepackage[german]{babel}
-\usepackage[T1]{fontenc}
-\usepackage{amsmath}
-\usepackage{amsfonts}
-\usepackage{amssymb}
-\usepackage{hyperref}
-\usepackage{listings}
-\usepackage{color}
-\usepackage{graphicx}
-\usepackage[section]{placeins}
-\lstset{
-frame=single, breaklines=true,
-postbreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\color{red}\hookrightarrow\space}}, numbers=left, numbersep=5pt
-}
-\author{Jonathan Weißenberger}
-\begin{document}
+
 \section{Einrichtung des Debuggers}
 In diesem Kapitel wird im Stil eines Tutorials vorgestellt, wie wir vorgegangen sind, um den Debugger zum Laufen zu bekommen. Als Betriebssystem kam Debian zum Einsatz.
 \subsection{st-flash Installation und UDEV-Rules}
@@ -175,4 +158,3 @@ Um zu debuggen muss zuerst OpenOCD gestartet werden. Dazu muss einfach der Menü
 Als der Debugger bei der Projektarbeit ernsthaft benötigt wurde, setzte das Werkzeug plötzlich aus. Zuerst war es nicht mehr möglich das Projekt auf die Plattform zu befördern und schließlich war es nicht mehr möglich den Debugmodus auf der Hardware zu starten. 
 Daraufhin wurde in einem Meeting des Teams besprochen es noch einmal mit einer anderen Installationsanleitung für den Debugger zu versuchen. Zuerst lieferte diese vielversprechende Ergebnisse, jedoch dann konnte auch hiermit keine Lösung herbeigeführt werden. 
 Link zur alternativen Lösung: \url{http://www.carminenoviello.com/2015/01/07/setting-gcceclipse-toolchain-stm32nucleo-part-2/}
-\end{document}

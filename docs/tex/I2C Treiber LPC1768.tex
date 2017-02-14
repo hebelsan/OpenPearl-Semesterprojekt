@@ -1,13 +1,3 @@
-\documentclass[12pt,a4paper]{article}
-\usepackage[utf8]{inputenc}
-\usepackage[german]{babel}
-\usepackage[T1]{fontenc}
-\usepackage{amsmath}
-\usepackage{amsfonts}
-\usepackage{amssymb}
-\usepackage{graphicx}
-\author{Jonathan Weißenberger}
-\begin{document}
 \section{Installation der Tools für die Entwicklung mit dem LPC1768}
 Um überhaupt arbeiten zu können habe ich das OpenPEARL-Projekt von SourceForge erneut geklont. Danach wird die Toolchain benötigt für die Kompilation des Projekt und später der eigenen Anwendungen gebraucht wird. In unserem Projekt kommt nach Absprache mit unserem betreuenden Professor Herr Müller Version \verb+gcc-arm-none-eabi-4_9-2014q4+
  zum Einsatz. 
@@ -36,4 +26,3 @@ INLINE int getStatus(I2C_ID_T id){
 Im wesentlichen ermöglicht die Funktion das Auslesen des Status der I2C-Einheit. 
 
 \subsection{Abbildung der i2c\_17xx40xx-Funktionen auf die Treibermethoden}
-\end{document}

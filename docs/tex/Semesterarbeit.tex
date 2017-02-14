@@ -5,13 +5,23 @@
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{color}
 \usepackage{graphicx}
+\usepackage[section]{placeins}
 \author{Jonathan Weißenberger}
 \title{Semesterarbeit OpenPEARL}
+\lstset{
+frame=single, breaklines=true,
+postbreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\color{red}\hookrightarrow\space}}, numbers=left, numbersep=5pt
+}
 \begin{document}
 \maketitle
 \newpage
 \tableofcontents
 \newpage
-\input{Aufgabenbeschreibung}
+\input{Aufgabenbeschreibung.tex}
+\input{ScheiternSTM.tex}
+\input{EinrichtungDebugger.tex}
 \end{document}
