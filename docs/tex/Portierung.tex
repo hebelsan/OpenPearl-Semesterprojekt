@@ -1,38 +1,4 @@
-\documentclass[12pt,a4paper]{article}
-\usepackage[utf8]{inputenc}
-\usepackage[german]{babel}
-\usepackage[T1]{fontenc}
-\usepackage{amsmath}
-\usepackage{amsfonts}
-\usepackage{amssymb}
-\usepackage{graphicx}
-\usepackage{listings}
-\usepackage{color}
-\usepackage{hyperref}
 
-
-\definecolor{dkgreen}{rgb}{0,0.6,0}
-\definecolor{gray}{rgb}{0.5,0.5,0.5}
-\definecolor{mauve}{rgb}{0.58,0,0.82}
-
-\lstset{frame=tb,
-  language=Java,
-  aboveskip=3mm,
-  belowskip=3mm,
-  showstringspaces=false,
-  columns=flexible,
-  basicstyle={\small\ttfamily},
-  numbers=none,
-  numberstyle=\tiny\color{gray},
-  keywordstyle=\color{blue},
-  commentstyle=\color{dkgreen},
-  stringstyle=\color{black},
-  breaklines=true,
-  breakatwhitespace=true,
-  tabsize=3
-}
-\author{Alexander Hebel}
-\begin{document}
 \section{Portierung von OpnePearl auf den Stm32f7}
 Um OpenPearl auf dem Stm32f7 benutzen zu können musste es davor angepasst werden.\\
 Für den Microcontroller Lpc1768 wurde bereits ein Portierung gemacht.\\
@@ -109,4 +75,3 @@ Doch anders als im Programm vorgesehen, blinkte die angesteuerte LED nicht.\\
 Hierfür kann es viele Gründe geben.\\
 Es kann sein das FreeRTOS nicht richtig läuft oder ein anderer Aspekt bei der Portierung übersehen wurde.\\
 Da der Debugger nicht richtig funktionierte war es schwierig genaueres in Erfahrung zu bringen.\\
-\end{document}
