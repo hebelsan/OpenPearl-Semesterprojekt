@@ -1,38 +1,3 @@
-\documentclass[12pt,a4paper]{article}
-\usepackage[utf8]{inputenc}
-\usepackage[german]{babel}
-\usepackage[T1]{fontenc}
-\usepackage{amsmath}
-\usepackage{amsfonts}
-\usepackage{amssymb}
-\usepackage{graphicx}
-\usepackage{listings}
-\usepackage{color}
-\usepackage{hyperref}
-
-
-\definecolor{dkgreen}{rgb}{0,0.6,0}
-\definecolor{gray}{rgb}{0.5,0.5,0.5}
-\definecolor{mauve}{rgb}{0.58,0,0.82}
-
-\lstset{frame=tb,
-  language=Java,
-  aboveskip=3mm,
-  belowskip=3mm,
-  showstringspaces=false,
-  columns=flexible,
-  basicstyle={\small\ttfamily},
-  numbers=none,
-  numberstyle=\tiny\color{gray},
-  keywordstyle=\color{blue},
-  commentstyle=\color{dkgreen},
-  stringstyle=\color{black},
-  breaklines=true,
-  breakatwhitespace=true,
-  tabsize=3
-}
-\author{Alexander Hebel}
-\begin{document}
 \section{Programmieren der Anwendung}
 Aus Zeitgründen musste die Portierung des Stm32f7 abgebrochen werden.\\
 Deshalb wurde die Anwendung für den RaspberryPi geschrieben.\\
@@ -234,7 +199,7 @@ Und das Zeichen 'T' soll die Waage symbolisieren.\\
 Falls die Kugel sich an einem bestimmten Punkt in der Sortierung befindet, wird das X durch einen roten Kreis ersetzt.\\
 \begin{figure}[h]
 \begin{center}
-\includegraphics[width=10cm]{grafiken/Ausgaeb_KugelinWaage.png}
+\includegraphics[width=10cm]{grafiken/Ausgabe_KugelinWaage.png}
 \caption{Ausgabe - Waage}
 \label{Ausgabe}
 \end{center}
@@ -265,10 +230,3 @@ Auch der Zugriff auf die Klappen ist noch nicht optimal, da immer auf alle Klapp
 Sicherer wäre es immer nur einzelne Klappen anzusprechen.\\
 In unserer Anwendung wurden Semaphoren benutzt um zu verhindern, dass gleichzeitig auf unterschiedliche Klappen zugegriffen wird.\\
 Diese Semaphoren würden dadurch entfallen und den Programmfluss einfacher gestalten.\\  
-
-
-
-
-
-
-\end{document}
