@@ -1,6 +1,6 @@
-\section{Einrichtung des Debuggers}
+\chapter{Einrichtung des Debuggers}
 In diesem Kapitel wird im Stil eines Tutorials vorgestellt, wie wir vorgegangen sind, um den Debugger zum Laufen zu bekommen. Als Betriebssystem kam Debian zum Einsatz.
-\subsection{st-flash Installation und UDEV-Rules}
+\section{st-flash Installation und UDEV-Rules}
 st-flash wurde von uns anfangs benutzt, um die erzeugten Kompilate auf die Zielplattform zu überführen. In der Installationsroutine ist auch die Installation der wichtigen UDEV-Rules enthalten. Diese werden später noch benötigt.
 Zuallererst muss das git-Repository heruntergeladen werden. Zusätzlich, falls nicht vorhanden noch ein paar nötige Build-Tools.
 \begin{lstlisting}[language=sh]
@@ -24,7 +24,7 @@ sudo cp *.rules /etc/udev/rules.d
 sudo udevadm --reload
 sudo udevadm trigger
 \end{lstlisting}
-\subsection{Download Eclipse}
+\section{Download Eclipse}
 Um den Debugger zum Laufen zu bekommen, benötigt man zuallererst eine funktionierende Eclipse IDE. Für unser Projekt haben wir uns für 'Eclipse IDE for C/C++ Developers' entschieden erhältlich auf \url{http://www.eclipse.org/downloads/}.
 Nach dem Download muss das Paket entpackt werden. In der Kommandozeile funktioniert dies mit dem Befehls 
 \begin{lstlisting} 
@@ -44,7 +44,7 @@ apt-get install oracle-java8-set-default
 exit
 
 \end{lstlisting}
-\subsection{Toolchain-Installation}
+\section{Toolchain-Installation}
 Um später debuggen zu können, wird ein Kompiler für die Zielplattform benötigt und der spezifische GDB. Diese Tools findet man in Toolchains. Eine Toolchain ist eine komplette Suite, mit Werkzeugen, um für fremde Hardwarearchitekturen Software bauen zu können.
 Wir verwenden die GNU-Toolchain. Zunächst laden wir die komplette Toolchain herunter.
 \begin{lstlisting}[language=sh]
@@ -62,7 +62,7 @@ nano ~/.bashrc
 # In der Datei zu ergaenzen:
 # export PATH=$PATH:/opt/<Name der entpackten tar>/bin
 \end{lstlisting}
-\subsection{Installieren der Eclipse Toolchain Tools}
+\section{Installieren der Eclipse Toolchain Tools}
 In dieser Sektion wird die Installation der Tools innerhalb Eclipse beschrieben.
 Zuallererst muss Eclipse geöffnet werden. Die ausführbare Eclipse-Datei befindet sich im entpackten Ordner.
 Man wird nach einem Workspace gefragt, einer Arbeitsumgebung. Dies ist der Ordner, in dem Eclipse die Projekte verwaltet. Sofern noch kein Ordner vorhanden ist, einfach einen neuen in Dateisystem erstellen.
@@ -83,7 +83,7 @@ Im Fenster 'Install New Software' das Textfeld 'Work with' mit 'GNU ARM Eclipse 
 \end{center}
 \end{figure}
 Danach muss der Haken beim Plugin gesetzt werden, ('GNU ARM C/C++ Cross Development Tools') und der Button 'next' betätigt werden. Eventuell muss man jetzt noch ein paar Lizenzverträgen zustimmen. Einfach die Dialoge mit next durchgehen und zum Schluss 'finish' betätigen.
-\subsection{Installieren von OpenOCD}
+\section{Installieren von OpenOCD}
 OpenOCD agiert als GDB-Server in unserer Anwendung. Darum müssen wir diese Anwendung noch installieren.
 Zuerst muss wieder das GIT-Repository geklont werden. Wir wechseln dazu zum opt-Ordner in unserer Linux-Distribution.
 \begin{lstlisting}
@@ -122,7 +122,7 @@ Es müssen dann die Einstellungen wie in \ref{ecplipse_OpenOCD_setting1} vorgeno
 \end{center}
 \end{figure}
 \newpage
-\subsection{GDB-Setup}
+\section{GDB-Setup}
 In diesem Kapitel wird das Setup des GDB-Debuggings behandelt. Zuvor haben wir die Toolchain für die Entwicklung auf der Zielplattform heruntergeladen. Nun müssen wir nur noch Eclipse beibringen, wie es den GDB aus der Toolchain findet. Außerdem müssen die passenden Parameter zur Ausführung des GDBs gesetzt werden.
 Um in die Debug-Einstellungen zu gelangen, muss im Menüpunkt 'Run' 'Debug Configurations... ' gewählt werden. 
 \begin{figure}[h]
@@ -151,9 +151,9 @@ Im Abschnitt 'Debugger' sollte die Konfiguration so aussehen wie in \ref{ecplips
 Die Startup-Einstellungen müssen noch um die 'Initialization Commands' aus dem Bild \ref{ecplipse_GDB_setting3} ergänzt werden.
 'Resume', 'Set breakpoint at: main', 'Load symbols', 'Load image' sind mit einem Haken versehen. 
 \FloatBarrier
-\subsection{Debuggen des ersten Projekts}
+\section{Debuggen des ersten Projekts}
 Um zu debuggen muss zuerst OpenOCD gestartet werden. Dazu muss einfach der Menüpunkt 'Run'>'External Tools'>'<Name der angelegten Konfiguration>' ausgewählt werden. Auf dem Target kann man anhand der blinkenden Status-LED feststellen, dass der Remote-Modus aktiviert wurde. Daraufhin muss der Debug-Button in Eclipse nur noch betätigt werden.
-\subsection{Einsatz des Debuggers}
+\section{Einsatz des Debuggers}
 Als der Debugger bei der Projektarbeit ernsthaft benötigt wurde, setzte das Werkzeug plötzlich aus. Zuerst war es nicht mehr möglich das Projekt auf die Plattform zu befördern und schließlich war es nicht mehr möglich den Debugmodus auf der Hardware zu starten. 
 Daraufhin wurde in einem Meeting des Teams besprochen es noch einmal mit einer anderen Installationsanleitung für den Debugger zu versuchen. Zuerst lieferte diese vielversprechende Ergebnisse, jedoch konnte auch hiermit keine Lösung herbeigeführt werden. 
 Link zur alternativen Lösung: \url{http://www.carminenoviello.com/2015/01/07/setting-gcceclipse-toolchain-stm32nucleo-part-2/}

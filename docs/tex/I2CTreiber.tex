@@ -1,4 +1,4 @@
-\section{Installation der Tools für die Entwicklung mit dem LPC1768}
+\chapter{Installation der Tools für die Entwicklung mit dem LPC1768}
 Bei der Entwicklung wird weiterhin mit einer virtuellen Maschine gearbeitet. Als Betriebssystem kommt Debian zum Einsatz. Während der Entwicklung des Treibers wurde festgestellt, dass Virtal Box von Oracle als Virtualisierungsumgebung nicht eignet. Es kann bei der Kommunikation mit dem Entwicklungsboard über USB zu Verzögerungen kommen.
 Um überhaupt arbeiten zu können wurde das OpenPEARL-Projekt von SourceForge erneut geklont. Zudem wird eine funktionierende Toolchain benötigt. In unserem Projekt kommt nach Absprache mit unserem betreuenden Professor Herr Müller Version {\textit{gcc-arm-none-eabi-4\_9-2014q4}}
  zum Einsatz. 
@@ -24,13 +24,13 @@ sudo apt-get install minicom
 \end{lstlisting}
 
 \newpage
-\section{I2C Treiber LPC1768}
-\subsection{Voraussetzungen für den Treiber}
+\chapter{I2C Treiber LPC1768}
+\section{Voraussetzungen für den Treiber}
 Um beim gesamten OpenPEARL-Projekt den Wartungsaufwand zu minimieren haben sich die Entwickler bei der Umsetzung auf ein modulares System entschieden. Das bedeutet, wenn ein hardwarespezifischer Treiber gebraucht wird, müssen nur die verfügbaren Interfaces implementiert werden und an einer anderen Stelle der Treiber bekannt gemacht werden und schon ist das Gerät verwendbar. Die bereits bestehenden FreeRTOS oder Linux-Module greifen dann auf die spezifizierten Interfacefunktionen zu. 
 Die Interfaces, die für den I2C-Treiber implementiert werden mussten beschränken sich auf eines - das 'I2CProvider'-Interface.
-\subsection{Vorgehensweise}
+\section{Vorgehensweise}
 Bei der Programmierung wurde als Referenz eine Demoapplikation des Herstellers hergenommen. Bei der Applikation wurde jedoch für eine andere Zielplattform entwickelt. Da jedoch die Funktionsbezeichner für unterschiedliche Boards bei den Herstellern ziemlich ähnlich sind, konnte das Beispiel eine gute Hilfestellung bieten. Es wurde klar, welche Funktionsaufrufe üblich und gefordert sind um das richtige Pinverhalten der I2C-Pins zu bekommen. Und überhaupt die Information über vorhandenes Pin-Muxing wurde geliefert. Darüberhinaus stellten sich auch schnell Unterschiede zu den Targets, die LPC11xx, für welche die Referenz verfasst ist, heraus.
-\subsection{Wesentliche Bestandteile des Treibers}
+\section{Wesentliche Bestandteile des Treibers}
 Alle verwendeten Interfacedefinitionen von OpenPEARL befinden sich im Ordner {\textit{/runtime/common}}.
 Der beim Projekt eingesetzte I2CProvider besitzt 3 Methoden, die im Treiber umgesetzt werden müssen.
 \begin{lstlisting}
@@ -46,7 +46,7 @@ INLINE int getStatus(I2C_ID_T id){
 \end{lstlisting}
 Im wesentlichen ermöglicht die Funktion das Auslesen des Status der I2C-Einheit. 
 
-\subsection{Beschreibung des Konstruktors}
+\section{Beschreibung des Konstruktors}
 Der Konstruktor enthält logischerweise mehrere Aufrufe auf die Treiber des LPC1768. Zuerst muss abhängig von der übergebenen PIN-Id das Pin-Muxing richtig betrieben werden. Das Target LPC1768 besitzt drei unterschiedliche I2C-Busse, die unabhängig voneinander benutzt werden können. Daher sind die angeforderten Busse zu unterscheiden. Pin-Muxing wird immer dann gebraucht, wenn ein Microcontroller mehr Funktionen bietet als ihm Pins zur Verfügung stehen. Die Pins müssen dann erst die richtige Funktion zugewiesen bekommen. Dies geschieht mit dem Aufruf von {\textit{Chip\_IOCON\_PinMuxSet}}. Damit das erzeugte Objekt wiedergefunden werden kann, wird es dem globalen Array {\textit{obj}} auf der jeweiligen Stelle zugewiesen. Gegen Ende des Konstruktors werden die Clockrate, also die Geschwindigkeit der I2C-Quarz gesetzt mit {\textit{Chip\_I2C\_SetClockRate}} und der generelle Hardware-Init der I2C-Peripherie mit {\textit{Chip\_I2C\_Init}} durchgeführt. Durch {\textit{Chip\_I2C\_SetMasterEventHandler}} wird der richtige EventHandler im Treiber gesetzt. Der Event Handler ist unser Zustandsautomat und ist somit dazu da, dass aktuell ankommenden Eingaben richtig verarbeitet werden können. Ohne den Zustandsautomaten wäre unser I2C-Gerät gar nicht einsatzfähig. Zuletzt wird im Konstruktor mit {\textit{NVIC\_EnableIRQ}} die Interruptserviceroutine für den jeweiligen I2C-Bus aktiviert. Dass von jedem Bus wirklich nur ein Objekt erzeugt wird, überprüft das OpenPEARL-System. Anbei ein Auszug aus dem Konstruktor:
 \begin{lstlisting}
 Lpc17xxI2C::Lpc17xxI2C(int channel, int speed){
@@ -75,7 +75,7 @@ switch(channel){
 }
 \end{lstlisting}
 
-\subsection{Abbildung der i2c\_17xx40xx-Funktionen auf die Treibermethoden}
+\section{Abbildung der i2c\_17xx40xx-Funktionen auf die Treibermethoden}
 Die wesentlichen zu erläuternden Methoden sind {\textit{readData}} und {\textit{writeData}}.
 In {\textit{readData}} wird die C-Funktion {\textit{Chip\_I2C\_MasterRead(I2C\_ID\_T id, uint8\_t adr, uint8\_t data, int n)}} abgebildet. Im Master-Modus wird ein Lesevorgang der Länge {\textit{n}} von einem Gerät mit der Adresse {\textit{adr}} durchgeführt. Ansonsten wird nur die selbst hinzugefügte Funktion {\textit{getStatus}} abgebildet, für den Fall, dass die Interruptserviceroutine die Semaphore wieder freigibt, auf die {\textit{readData}} wartet.\\
 {\textit{writeData}} bildet die C-Funktion {\textit{Chip\_I2C\_MasterSend(I2C\_ID\_T id, uint8\_t adr, uint8\_t * data, int n)}} ab. Der I2C-Bus {\textit{id}} schreibt auf das Gerät {\textit{adr}} die Daten aus {\textit{data}} mit der Länge {\textit{n}}. Wie bei {\textit{readData}} wird auf eine Semaphore gewartet. Auch hier muss nach der Freigabe überprüft werden, ob der Schreibvorgang überhaupt geglückt ist. Hier der exemplarische Auszug aus {\textit{readData}}:
@@ -90,10 +90,10 @@ int Lpc17xxI2C::readData(int adr, int n, uint8_t * data){
 }
 \end{lstlisting}
 
-\subsection{Threadsicherheit des Treibers}
+\section{Threadsicherheit des Treibers}
 Damit nicht mehrere Schreibvorgänge auf einem I2C-Bus gleichzeitig ausgeführt werden können oder Schreib-und Lesevorgänge gleichzeitig auf einem Bus registriert werden können, besitzt jeder Bus, für den ein Objekt instanziiert werden kann ein Mutex. Beim Registrieren einer Operation -sei es Lesen oder Schreiben- wird dieses Mutex belegt und die jeweils andere Operation wird ausgeschlossen und muss warten. Auch wird somit das Problem von mehreren gleichzeitigen Schreib-oder Lesevorgängen behoben, denn auch Operationen vom gleichen Typ werden in die Warteschlange eingereiht.
 
-\subsection{Überprüfung der Funktionalität des Treibers}
+\section{Überprüfung der Funktionalität des Treibers}
 In diesem Kapitel wird kurz erläutert, wie weit der Treiber schon getestet wurde.
 Um zu überprüfen, ob der Treiber funktioniert, wurde in {\textit{/runtime/lpc1768/tests}} ein neues Dokument {\textit{i2cTest.cc}} angelegt. Dies muss als C++-Quelldatei erfolgen, da der Inter-Module-Checker (IMC), der Bestandteil von Pearl ist noch nicht mit unserem Treiber vertraut ist. 
 Normalerweise wird beim Kompilieren aus dem {\textit{.prl}}-File das zugehörige {\textit{.cc}}-File generiert. Jedoch wird beim Wandel von {\textit{.prl}} zu {\textit{.cc}} zusätzlich auch eine {\textit{.xml}-Datei erzeugt, welche Treiberinformationen beinhaltet. Diese Datei ist wichtig, weil durch die enthaltenen Infomation überprüft werden kann, ob das zu übersetzende Projekt auf dem Target überhaupt ausführbar ist. Ein Projekt ist ausführbar und übersetzbar, wenn der IMC für das in {\textit{make menuconfig}} ausgewählte Target alle Treiber kennt. Da eben dieser IMC den Treiber noch nicht kennt musste die Stufe von {\textit{.prl}} zu {\textit{.cc}} übersprungen werden, indem man die Applikation direkt in C++ schreibt. Somit wird der IMC komplett umgangen, jedoch ist der Code somit an die Plattform LPC1768 gebunden, weil im Code explizit der Treiber für das Target eingebunden ist. Wenn der IMC aktiv wäre würde er beim Wandeln der PEARL-Datei in die C++-Datei für den angeforderten Treiber die Plattformspezifischen Daten -also den Plattformabhängigen Treiber- setzen. 
