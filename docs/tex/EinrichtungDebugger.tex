@@ -1,4 +1,3 @@
-
 \section{Einrichtung des Debuggers}
 In diesem Kapitel wird im Stil eines Tutorials vorgestellt, wie wir vorgegangen sind, um den Debugger zum Laufen zu bekommen. Als Betriebssystem kam Debian zum Einsatz.
 \subsection{st-flash Installation und UDEV-Rules}
@@ -10,13 +9,13 @@ sudo apt-get install libusb-1.0-0-dev git
 git clone https://github.com/texane/stlink stlink.git
 cd stlink.git
 \end{lstlisting}
-Sobald das Repository heruntergeladen ist, wechseln wir in das Projektverzeichnis und führen die Installationsprozedur aus. Zuerst das "make" und danach kopieren wird die ausführbaren Binarys in das "/usr/bin"-Verzeichnis.
+Sobald das Repository heruntergeladen ist, wechseln wir in das Projektverzeichnis und führen die Installationsprozedur aus. Zuerst das "make" und danach werden die ausführbaren Binarys in das "/usr/bin"-Verzeichnis kopiert.
 \begin{lstlisting}[language=sh]
 make
 sudo cp build/Release/st-* /usr/bin
 exit # -> Bash neu starten
 \end{lstlisting}
-Zum Schluss werden die udev-Rules gesetzt, damit das Gerät, also das Target richtig erkannt wird.
+Zum Schluss werden die udev-Rules gesetzt, damit das Gerät -also das Target- richtig erkannt wird.
 \begin{lstlisting}
 cd ~/stlink.git
 ls -LR | grep rule
@@ -27,7 +26,7 @@ sudo udevadm trigger
 \end{lstlisting}
 \subsection{Download Eclipse}
 Um den Debugger zum Laufen zu bekommen, benötigt man zuallererst eine funktionierende Eclipse IDE. Für unser Projekt haben wir uns für 'Eclipse IDE for C/C++ Developers' entschieden erhältlich auf \url{http://www.eclipse.org/downloads/}.
-Nach dem Download muss das Paket entpackt werden. In der Kommandozeile funktioniert dies mittel des Befehls 
+Nach dem Download muss das Paket entpackt werden. In der Kommandozeile funktioniert dies mit dem Befehls 
 \begin{lstlisting} 
 tar -xzf <eclipse-download-file>
 \end{lstlisting}
@@ -46,7 +45,7 @@ exit
 
 \end{lstlisting}
 \subsection{Toolchain-Installation}
-Um später debuggen zu können, wird ein Kompiler für die Zielplattform benötigt und der spezifische GDB. Diese Tools findet man in Toolchains. Ein Toolchain ist eine komplette Suite, mit Werkzeugen, um für fremde Hardwarearchitekturen Software bauen zu können.
+Um später debuggen zu können, wird ein Kompiler für die Zielplattform benötigt und der spezifische GDB. Diese Tools findet man in Toolchains. Eine Toolchain ist eine komplette Suite, mit Werkzeugen, um für fremde Hardwarearchitekturen Software bauen zu können.
 Wir verwenden die GNU-Toolchain. Zunächst laden wir die komplette Toolchain herunter.
 \begin{lstlisting}[language=sh]
 cd /opt
@@ -106,7 +105,7 @@ cd tcl
 \end{lstlisting}
 Wir arbeiten im /opt-verzeichnis, da das GNU-ARM-Plug-in Konventionen folgt. Wenn man im Ordner gnuarmeclipse Installationen anlegt, werden diese automatisch vom Plug-in erkannt.
 Nichtsdestotroz müssen jetzt in Eclipse Einstellungen angepasst werden.
-Bei unserer Lösung des Debuggens wird OpenOCD als externes Tool gestartet. Dazu müssen in Eclipse ein Paar Änderungen vorgenommen werden. Unter dem Menüpunkt 'Run'>'External Tools Configurations...' können die Einstellungen hierfür vorgenommen werden.
+Bei unserer Lösung des Debuggens wird OpenOCD als externes Tool gestartet. Dazu müssen in Eclipse ein paar Änderungen vorgenommen werden. Unter dem Menüpunkt 'Run'>'External Tools Configurations...' können die Einstellungen hierfür vorgenommen werden.
 \begin{figure}[h]
 \begin{center}
 \includegraphics[width=12cm]{grafiken/debugger/RunConfiguration1.png}
@@ -154,7 +153,7 @@ Die Startup-Einstellungen müssen noch um die 'Initialization Commands' aus dem 
 \FloatBarrier
 \subsection{Debuggen des ersten Projekts}
 Um zu debuggen muss zuerst OpenOCD gestartet werden. Dazu muss einfach der Menüpunkt 'Run'>'External Tools'>'<Name der angelegten Konfiguration>' ausgewählt werden. Auf dem Target kann man anhand der blinkenden Status-LED feststellen, dass der Remote-Modus aktiviert wurde. Daraufhin muss der Debug-Button in Eclipse nur noch betätigt werden.
-\subsection{Das erste Projekt war das letzte Projekt}
+\subsection{Einsatz des Debuggers}
 Als der Debugger bei der Projektarbeit ernsthaft benötigt wurde, setzte das Werkzeug plötzlich aus. Zuerst war es nicht mehr möglich das Projekt auf die Plattform zu befördern und schließlich war es nicht mehr möglich den Debugmodus auf der Hardware zu starten. 
-Daraufhin wurde in einem Meeting des Teams besprochen es noch einmal mit einer anderen Installationsanleitung für den Debugger zu versuchen. Zuerst lieferte diese vielversprechende Ergebnisse, jedoch dann konnte auch hiermit keine Lösung herbeigeführt werden. 
+Daraufhin wurde in einem Meeting des Teams besprochen es noch einmal mit einer anderen Installationsanleitung für den Debugger zu versuchen. Zuerst lieferte diese vielversprechende Ergebnisse, jedoch konnte auch hiermit keine Lösung herbeigeführt werden. 
 Link zur alternativen Lösung: \url{http://www.carminenoviello.com/2015/01/07/setting-gcceclipse-toolchain-stm32nucleo-part-2/}
