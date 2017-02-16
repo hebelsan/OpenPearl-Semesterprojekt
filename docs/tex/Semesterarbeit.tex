@@ -22,6 +22,14 @@
 \usepackage{graphicx}
 \usepackage[section]{placeins}
 \usepackage{comment}
+\makeatletter
+\newcommand{\sectionauthor}[1]{%
+  {\parindent0pt\vspace*{-20pt}%
+  \linespread{1.1}\large\scshape#1%
+  \par\nobreak\vspace*{15pt}}
+  \@afterheading%
+}
+\makeatother
 \author{Alexander Hebel, Jonathan Weißenberger}
 \title{Semesterarbeit OpenPEARL}
 
@@ -54,24 +62,15 @@ postbreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\color{red}\hookrightarrow\space}
 }
 \begin{document}
 \maketitle
-\newpage
 \tableofcontents
-\newpage
 \listoffigures
-\newpage
 \input{Aufgabenbeschreibung.tex}
-\newpage
 \input{EinrichtungDebugger.tex}
-\newpage
 \input{Portierung.tex}
-\newpage
 \input{ScheiternSTM.tex}
-\newpage
 \input{Anwendung.tex}
-\newpage
 \input{I2CTreiber.tex}
-\newpage
 \input{ScheiternLPC.tex}
-\newpage
+\input{affirmation.tex}
 \input{Anhang.tex}
 \end{document}

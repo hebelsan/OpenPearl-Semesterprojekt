@@ -1,10 +1,10 @@
-
-\section{Programmieren der Anwendung}
+\chapter{Programmieren der Anwendung}
+\sectionauthor{Autor: Alexander Hebel}
 Aus Zeitgründen musste die Portierung des Stm32f7 abgebrochen werden.\\
 Deshalb wurde die Anwendung für den RaspberryPi geschrieben.\\
 Um mit der Kugelmaschine kommunizieren zu können stand ein $I^2$C-Teil für den RaspberryPi bereit.\\
 Doch bervor man direkt an das Programmieren der Anwendung gehen konnte, war ein wenig Einarbeitung in die Programmiersprache OpenPEARL nötig.\\
-\subsection{Vorbereitung}
+\section{Vorbereitung}
 Um in die Syntax von OpenPEARL hinein zu finden und das Semaphorenwissen wieder ein bisschen aufzufrischen war es zunächst die Aufgabe das Erzeuger-Verbraucher-Problem(Liteartur:  Rainer Oechsle, {\textit{Parallele Programmierung mit Java Threads}}, 2001) in OpenPEARL zu programmieren.\\
 Als das erledigt war, folgte das Philosophen-Problem(Liteartur: K. Mani Chandy \& Jayadev Misra, {\textit{The Drinking Philosophers Problem}}, 1984).\\
 Hierbei fiel vor allem auf, wie leicht das Programmieren mit OpenPEARL von der Hand geht.\\
@@ -29,7 +29,7 @@ Beim Testen des Motors fiel auf, dass die analogen Werte sich ab einem bestimmte
 Durch die Anpassung eines Wertes bei der Initialisierung des Analog-Digital-Converter(ADC) konnte dieser Fehler jedoch behoben werden.\\
 \newpage
 
-\subsection{Gerätesteuerung}
+\section{Gerätesteuerung}
 \subsubsection{Lichtschranken}
 Die Kugelsortiermaschine besitzt insgesamt 9 Lichtschranken.\\
 In unserer Anwendung sind die Lichtschranken so durchnummeriert, dass Lichtschranke 1 die oberste im Bau der Maschine ist und Lichtschranke 9 ganz unten links zu finden ist.\\
@@ -82,7 +82,7 @@ Nachdem die Dichte ausgerechnet wurde, wird die Kugel von der Waage weggestoßen
 Das \nameref{Sortierkriterium} und die \nameref{Umrechnung analoger Werte} befinden sich in späteren Kapiteln.\\
 \clearpage
 
-\subsection{Sortierkriterium}\label{Sortierkriterium}
+\section{Sortierkriterium}\label{Sortierkriterium}
 Anfangs war das Sortierkriterium ausschließlich der Wert der Dichte.\\
 Doch bei Tests stellte sich heraus, dass die Klappe ganz rechts(Draufsicht) sich nicht vollständig öffnen ließ.\\ 
 Wahrscheinlich weil die Maschine lange nicht in Benutzung war.\\
@@ -95,7 +95,7 @@ In die 4. Schiene fällt eine Kugel mit einer Dichte kleiner 4 g/$cm^3$ und grö
 Hat eine Kugel eine Dichte größer 4 g/$cm^3$ fällt sie in die 5. Schiene.\\ 
 \newpage
 
-\subsection{Umrechnung analoger Werte}\label{Umrechnung analoger Werte}
+\section{Umrechnung analoger Werte}\label{Umrechnung analoger Werte}
 In der TASK rechner wird die Dichte der Kugel berechnet.\\
 Um die Dichte auszurechnen benötigt man das Volumen und für das Volumen benötigt man den Durchmesser und das Gewicht der Kugel.\\
 Die Machine liefert nur einen analogen Wert.\\
@@ -125,7 +125,7 @@ Am Ende wurde mit den neuen Faktoren die Dichte von ein paar Kugeln berechnet.\\
 
 
 
-\subsection{Programmfluss}
+\section{Programmfluss}
 Der Programmfluss wird durch 14 Semaphoren geregelt.\\
 Um dies zu veranschaulichen ist im Anhang ein \nameref{Aktivitätsdiagramm} beigelegt.\\
 In diesem ist jede Semaphore unterschiedlich eingefärbt, damit gleiche Semaphoren in unterschiedlichen Tasks besser erkennbar sind.\\
@@ -165,7 +165,7 @@ Der gesamte \nameref{Quellecode} des Programms befindet sich in unserem Reposito
 
 
 
-\subsection{Ausgabe}
+\section{Ausgabe}
 Um den Kontrollfluss besser nachvollziehen zu können wurde eine Ausgabe entwickelt.
 Die Komplette Ausgabe baut auf den Steuerzeichen der vt100 Konsole auf.\\
 In der Main Task wird gleich zu Beginn ein Schema aufgebaut, dass sich danach nur bei Änderung ändert.
@@ -217,7 +217,7 @@ Der Kreis soll eine Kugel darstellen und daneben ist die Dichte angegeben mit de
 Die Werte der Kugeln stapeln sich in der Tabelle untereinander auf, so wie sie es auch in der Kugelsortiermaschine machen. 
 \newpage
 
-\subsection{Mögliche Verbesserungsansätze der Anwendung}
+\section{Mögliche Verbesserungsansätze der Anwendung}
 Die Anwendung besitzt keine Fehlerbehandlung und auch die Ausgabe ist noch verbesserungswürdig.\\
 Wenn zum Beispiel keine Kugel im Motor ankommt fährt dieser trotzdem zu und das Programm geht weiter.\\
 Man müsste in diesem Fall das Programm anhalten und wieder zurücksetzten.\\

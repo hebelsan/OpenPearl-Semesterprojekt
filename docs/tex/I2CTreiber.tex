@@ -1,4 +1,5 @@
 \chapter{Installation der Tools für die Entwicklung mit dem LPC1768}
+\sectionauthor{Autor: Jonathan Weißenberger}
 Bei der Entwicklung wird weiterhin mit einer virtuellen Maschine gearbeitet. Als Betriebssystem kommt Debian zum Einsatz. Während der Entwicklung des Treibers wurde festgestellt, dass Virtal Box von Oracle als Virtualisierungsumgebung nicht eignet. Es kann bei der Kommunikation mit dem Entwicklungsboard über USB zu Verzögerungen kommen.
 Um überhaupt arbeiten zu können wurde das OpenPEARL-Projekt von SourceForge erneut geklont. Zudem wird eine funktionierende Toolchain benötigt. In unserem Projekt kommt nach Absprache mit unserem betreuenden Professor Herr Müller Version {\textit{gcc-arm-none-eabi-4\_9-2014q4}}
  zum Einsatz. 
@@ -23,8 +24,8 @@ Zuletzt wird ein Logger oder Visualisierungstool für die ankommenden Daten vom 
 sudo apt-get install minicom
 \end{lstlisting}
 
-\newpage
 \chapter{I2C Treiber LPC1768}
+\sectionauthor{Autor: Jonathan Weißenberger}
 \section{Voraussetzungen für den Treiber}
 Um beim gesamten OpenPEARL-Projekt den Wartungsaufwand zu minimieren haben sich die Entwickler bei der Umsetzung auf ein modulares System entschieden. Das bedeutet, wenn ein hardwarespezifischer Treiber gebraucht wird, müssen nur die verfügbaren Interfaces implementiert werden und an einer anderen Stelle der Treiber bekannt gemacht werden und schon ist das Gerät verwendbar. Die bereits bestehenden FreeRTOS oder Linux-Module greifen dann auf die spezifizierten Interfacefunktionen zu. 
 Die Interfaces, die für den I2C-Treiber implementiert werden mussten beschränken sich auf eines - das 'I2CProvider'-Interface.
