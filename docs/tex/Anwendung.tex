@@ -3,11 +3,11 @@
 Aus Zeitgründen musste die Portierung des Stm32f7 abgebrochen werden.\\
 Deshalb wurde die Anwendung für den RaspberryPi geschrieben.\\
 Um mit der Kugelmaschine kommunizieren zu können stand ein $I^2$C-Teil für den RaspberryPi bereit.\\
-Doch bervor man direkt an das Programmieren der Anwendung gehen konnte, war ein wenig Einarbeitung in die Programmiersprache OpenPearl nötig.\\
+Doch bervor man direkt an das Programmieren der Anwendung gehen konnte, war ein wenig Einarbeitung in die Programmiersprache OpenPEARL nötig.\\
 \subsection{Vorbereitung}
-Um in die Syntax von OpenPearl hinein zu finden und das Semaphorenwissen wieder ein bisschen aufzufrischen war es zunächst die Aufgabe das Erzeuger-Verbraucher-Problem(Liteartur:  Rainer Oechsle, {\textit{Parallele Programmierung mit Java Threads}}, 2001) in OpenPearl zu programmieren.\\
+Um in die Syntax von OpenPEARL hinein zu finden und das Semaphorenwissen wieder ein bisschen aufzufrischen war es zunächst die Aufgabe das Erzeuger-Verbraucher-Problem(Liteartur:  Rainer Oechsle, {\textit{Parallele Programmierung mit Java Threads}}, 2001) in OpenPEARL zu programmieren.\\
 Als das erledigt war, folgte das Philosophen-Problem(Liteartur: K. Mani Chandy \& Jayadev Misra, {\textit{The Drinking Philosophers Problem}}, 1984).\\
-Hierbei fiel vor allem auf, wie leicht das Programmieren mit OpenPearl von der Hand geht.\\
+Hierbei fiel vor allem auf, wie leicht das Programmieren mit OpenPEARL von der Hand geht.\\
 Für diese beiden Aufgaben wurde im Vergleich zu anderen Programmiersprachen, wie zum Beispiel Java, nur sehr wenig Zeilencode benötigt.\\
 Dadurch, dass man das Programm in Tasks strukturiert, wird es automatisch übersichtlicher.\\
 Beispielsweise macht man sich einen Task für die Ausgabe und einen für den Algorithmus.\\
@@ -24,7 +24,7 @@ Dabei wurde der Rechner mit dem RaspberryPi und der RaspberryPi über $I^2$C mit
 \noindent
 Zunächst wurde versucht jedes einzelne Gerät (Motor, Lichtschranke, Klappen, Waage) der Kugelsortiermaschine anzusteuern.\\
 Man konnte schnell erkennen, dass viele Semaphoren für die Sortierung nötig waren, da die Kugel immer nur weiter rollen darf, wenn der nächste Abschnitt, in den sie rollt, frei ist.
-In Teilen des Programms musste C bzw. cpp Code verwendet werden, da manche Funktionen (z.B. Auslesen eines einzelnen Bits) noch nicht in OpenPearl umgesetzt sind.\\
+In Teilen des Programms musste C bzw. C++ Code verwendet werden, da manche Funktionen (z.B. Auslesen eines einzelnen Bits) noch nicht in OpenPEARL umgesetzt sind.\\
 Beim Testen des Motors fiel auf, dass die analogen Werte sich ab einem bestimmten Durchmesser nicht mehr änderten.\\ 
 Durch die Anpassung eines Wertes bei der Initialisierung des Analog-Digital-Converter(ADC) konnte dieser Fehler jedoch behoben werden.\\
 \newpage
@@ -217,7 +217,7 @@ Der Kreis soll eine Kugel darstellen und daneben ist die Dichte angegeben mit de
 Die Werte der Kugeln stapeln sich in der Tabelle untereinander auf, so wie sie es auch in der Kugelsortiermaschine machen. 
 \newpage
 
-\subsection{Noch Fehlend}
+\subsection{Mögliche Verbesserungsansätze der Anwendung}
 Die Anwendung besitzt keine Fehlerbehandlung und auch die Ausgabe ist noch verbesserungswürdig.\\
 Wenn zum Beispiel keine Kugel im Motor ankommt fährt dieser trotzdem zu und das Programm geht weiter.\\
 Man müsste in diesem Fall das Programm anhalten und wieder zurücksetzten.\\
